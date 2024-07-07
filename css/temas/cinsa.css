@@ -1,0 +1,9 @@
+:root {
+    --cor_pri: rgb(71, 62, 83);
+    --cor_sec: rgb(255, 255, 255);
+    --cor_terc: rgb(153, 152, 175);
+    --char: rgb(255, 255, 255);
+    --char_pri: white;
+    --char_sec: white;
+    --char_terc: var(--cor_terc);
+}

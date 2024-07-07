@@ -1,0 +1,87 @@
+body{
+    background-color: var(--cor_sec);
+    color: white;
+}
+.nav_adm{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    border: 2px solid white;
+    border-color: white transparent;
+}
+.nav_adm a{
+    color: white;
+    text-decoration: none;
+}
+.nav_adm .container{
+    width: 100%;
+    padding: 0;
+}
+.nav_adm .col{
+    text-align: center;
+    font-size: 15pt;
+    height: 100%;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 5px;
+}
+.nav_adm .col:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+}
+.adm_corpos{
+    position: relative;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+.cp{
+    position: absolute;
+    height: 100%;
+}
+.adm_corpo1{
+    float: left;
+    width: 43%;
+}
+.adm_corpo2{
+    right: 0;
+    width: 55%;
+    border: 2px solid white;
+    border-top: none;
+}
+.adm_corpos .a_pesquisar{
+    width: 100%;
+    height: 40px;
+    margin: 10px;
+}
+.adm_corpos .a_pesquisar input{
+    width: 70%;
+    height: 37px;
+}
+.adm_corpos .a_pesquisar button{
+    width: 29%;
+    height: 35px;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background: white;
+    color: var(--cor_sec);
+}
+/* usuarios */
+
+.usuarios{
+    padding: 5px !important;
+    border-bottom: 2px solid #ddd;
+    max-width: 100%;
+    margin-left: 10px !important;
+}
+.usuarios.container,
+.usuarios .container{
+    margin: 0;
+    padding: 0;
+}
+.usuarios .nome{
+    width: calc(100% - 100px);
+    margin-left: 20px;
+}
+.usuarios .btn_msg{
+    width: 30px;
+}

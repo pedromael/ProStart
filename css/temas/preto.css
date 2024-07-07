@@ -1,0 +1,10 @@
+:root{
+    --cor_pri: rgb(25, 25, 25);
+    --cor_sec: #2e356c;
+    --cor_terc: #2a2828;
+    --char_pri: white;
+    --char_sec: rgb(0, 0, 0);
+    --bc_pbl: var(--cor_terc);
+    --bc_code: rgba(90, 90, 90, 0.1);
+    --pbl_reac: #5c5b5b;
+}

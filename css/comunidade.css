@@ -1,0 +1,103 @@
+.direita{
+    position: absolute;
+    float: right;
+}
+.esquerda{
+    position: absolute;
+    float: left;
+}
+@media (min-width: 600px){
+    #aps{
+        display: none;
+    }
+}
+@media (max-width: 600px){
+    .ops_nova_comunidade{
+        display: none;
+    }
+}
+.carregar_img{
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1/1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 100%;
+    margin-top: 67px;
+}
+.carregar_img:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.cabecalho{
+    position: relative;
+    margin: auto;
+    margin-top: 5px;
+    width: 98%;
+    height: 178px;
+}
+#cabe,
+.cabecalho .info{
+    height: 145px;
+    position: relative;
+}
+#cabe{
+    width: 170px;
+    float: left;
+    margin-bottom: 5px;
+    background-color: var(--cor_pri);
+    margin: 4px;
+    margin-top: 0;
+    margin-left: 0;
+    border-left: 1px solid var(--cor_sec);
+}
+.cabecalho .info{
+    position: relative;
+    width: calc(100% - 176px);
+    float: right;
+    margin-bottom: 5px;
+    border: 1px solid var(--cor_sec);
+    border-right: none;
+}
+.cabecalho .info .definicoes{
+    position: absolute;
+    background-color: var(--cor_pri);
+    padding: 4px;
+    right: -1px;
+    top: 0;
+}
+.cabecalho .info .definicoes .titulo{
+    color: var(--cor_sec);
+}
+.cabecalho .info .definicoes .descricao{
+    color: var(--cor_sec);
+}
+
+.cabecalho .info .descricao_cmd{
+    position: absolute;
+    color: var(--cor_sec);
+    bottom: 0;
+    left: 10px;
+    padding: 3px;
+    border-top: 1px solid var(--cor_sec);
+}
+#img_comunidade{
+    width: 80%;
+    position: relative;
+    aspect-ratio: 1/1;
+    top: 0;
+    margin: auto;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#nome_comunidade{
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    text-indent: 5px;
+    color: var(--cor_sec);
+}
+#cadastro{
+    width: 80%;
+    margin: auto;
+}

@@ -1,0 +1,44 @@
+:root {
+    --cor_pri: rgb(13, 1, 50);
+    --cor_sec: rgb(13, 1, 50);
+    --cor_terc: rgb(118, 8, 113);
+    --char_pri: var(--cor_pri);
+    --char: white;
+    --char_sec: white;
+    --char_terc: var(--cor_terc);
+}:root{
+    --cor_pri: rgb(196, 131, 1);
+    --cor_sec: #FFC107;
+    --cor_terc: rgb(255, 255, 255);
+    --char_pri: rgb(0, 0, 0);
+    --char: rgb(0, 0, 0);
+    --char_sec: rgb(0, 0, 0);
+    --char_terc: var(--cor_terc);
+
+    --bc_pbl: #ffffff3c;
+}:root{
+    --cor_pri: #002449;
+    /*--cor_pri: #001933;*/
+    --cor_sec: #1a1919;
+    --cor_terc: #f0fbfd;
+    --cor_quar: #36c7f8;
+    --cor_quinta: #91C5CD;
+    --char_pri: rgb(0, 0, 0);
+    --char: rgb(255, 255, 255);
+    --char_sec: rgb(255, 255, 255);
+    --char_terc: var(--cor_terc);
+    --bc_pbl: var(--cor_sec);
+}:root{
+    --cor_pri: rgb(255, 255, 255);
+    --cor_sec: blueviolet;
+    --cor_terc: blueviolet;
+    --cor_quar: blueviolet;
+    --cor_quinta: blueviolet;
+    --char_pri: rgb(0, 0, 0);
+    --char: rgb(0, 0, 0);
+    --char_sec: rgb(0, 0, 0);
+    --char_terc: black;
+    --bc_pbl: var(--cor_sec);
+}
+
+
