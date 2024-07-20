@@ -1748,7 +1748,7 @@ a{
     border-radius: 10px;
     padding: 7px;
     margin-top: 20px;
-    animation: lg 2s linear;
+    animation: lg 1s linear;
     box-shadow: 0 0 4px var(--cor_sec);
     background: #f0fbfd;
     max-width: 350px;

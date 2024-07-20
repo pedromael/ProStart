@@ -5,7 +5,7 @@ function gerar($nome,$tentativas) {
     if (isset($nome[1])) {
         $nome[0] = preg_replace('/[^a-z0-9]/i',"", $nome[0]);
         $nome[-1] = preg_replace('/[^a-z0-9]/i',"", $nome[1]);
-        $nome = $nome[0]."_".$nome[-1][0];
+        $nome = $nome[0].strtoupper($nome[-1][0]);
     }else {
         $nome = $nome[0];
     }

@@ -2,14 +2,14 @@
 class informacoes_usuario extends conexao
 {
     public $user;
-    public $linguas_falada;
+    //public $linguas_falada;
     public $gostos;
     public $indereco; 
 
     public function __construct(){ 
         parent::__construct();
         $this->user = $this->usuario($_SESSION['id_user']);
-        $this->linguas_falada = $this->linguas_falada($_SESSION['id_user']);
+        //$this->linguas_falada = $this->linguas_falada($_SESSION['id_user']);
         $this->gostos = $this->gostos_do_usuario($_SESSION['id_user']);
     }
     public function usuario($id_user = false,$todo=false) {
