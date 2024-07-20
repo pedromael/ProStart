@@ -22,10 +22,11 @@ class notificacoes extends process
         
         if ($sql['tipo'] == "cmt" || $sql['tipo'] == "cmt_code") {
             $id = $sql['id_historico'];
-            $id = mysqli_query(conn(), "SELECT * FROM pro_start_outros.historico_id WHERE id_historico = $id");
+            $id = mysqli_query(conn(), "SELECT id FROM pro_start_outros.historico_id WHERE id_historico = $id");
             $id = mysqli_fetch_assoc($id);
+            if(empty($id['id'])){return false;}
             $id = $id['id'];
-            
+
             if ($sql['tipo'] == "cmt") {
                 $cmt = mysqli_query(conn(), "SELECT cmt.texto AS texto_cmt,pbl.id_pbl,tipo,pbl.texto AS texto_pbl FROM pbl 
                 INNER JOIN cmt ON (cmt.id = pbl.id_pbl)
