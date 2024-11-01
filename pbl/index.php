@@ -69,7 +69,7 @@
                 <div class="comentarios">
                     <?php
                     $_SESSION['cmt_visualizado'] = array();
-                    $comentarios =  new comentarios;
+                    $comentarios =  new comentarios; 
                     $comentarios->id = $id_pbl;
                     $comentarios->pegar("pbl", 8);
                     ?>
@@ -81,9 +81,6 @@
                     <div class="carregar"  style="background-image: url(../bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
                     <button name="btn_cmt" style="background-image: url(../bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="comentar('<?=criptografar($id_pbl)?>','pbl',0)"></button>
                 </div>
-                <?php
-                require "../sent.php";
-                ?>
             </footer>
         </div>
         <div class="corpo2 crp"></div>

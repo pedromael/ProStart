@@ -1,18 +1,17 @@
 <?php
 class process extends informacoes_usuario{
     function __construct() {
-        parent::__construct();
+        parent::__construct(); 
     }
     public function inserir_historico($tipo, $id) {
         $sql = $this->pdo->prepare("INSERT INTO $this->bdnome2.historico(id_user,id,tipo,data) VALUES(:user,:id,:t,NOW())");
         $sql->bindValue(":user", $_SESSION['id_user']);
         $sql->bindValue("t", $tipo);
         $sql->bindValue(":id", $id);
-        if ($sql->execute()) {
-            return true;
-        }else {
+        if (!$sql->execute()) {
             return false;
         }
+        return false;
     }
     public function marcar_visto($id,$tipo){
         $sql = $this->pdo->prepare("SELECT * FROM $this->bdnome2.visto WHERE id_user=:user AND id=$id AND tipo='$tipo'");
