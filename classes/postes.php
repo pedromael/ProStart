@@ -335,7 +335,7 @@ class postes extends process
             WHERE id_user = :id AND id_comunidade = 0
             ORDER BY id_pbl DESC");  
             $sql->bindValue(":id", $this->oque);
-        }
+        } 
         $sql->execute();
         if ($tipo != "global") {
             foreach ($sql->fetchAll() AS $row) {
