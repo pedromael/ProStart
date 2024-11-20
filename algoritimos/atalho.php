@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 function autoloader($class) {
     $indereco = __DIR__.'/classes/'.str_replace('\\','/',$class).".php";
@@ -33,14 +36,12 @@ if(/*$_SESSION['adm']==true &&*/ false){
         }
     }
 }
-$bdnome2 = "pro_start_outros";
+
+$bdnome2 = (new conexao)->bdnome2;
 function conn()
 {
-    $bdnome = "pro_start";
-    $bdhost = "localhost";
-    $bdpass = "";
-    $bduser = "root";
-    return mysqli_connect($bdhost,$bduser,$bdpass,$bdnome); 
+    $c = new conexao;
+    return mysqli_connect($c->bdhost,$c->bduser,$c->bdpass,$c->bdnome); 
 }
 
 function inserir_historico($tipo, $id, $id_cmt = 0) {

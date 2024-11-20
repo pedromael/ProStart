@@ -28,25 +28,23 @@ function gerar($nome,$tentativas) {
     
 }
 function gerar_code_nome($name) {
-    $conn = new mysqli("localhost","root","","pro_start");
-    if ($conn->connect_error) {
-        die("Não foi possível conectar ao banco de dados: " . $conn->connect_error);
-    }
+    $pdo = (new conexao)->pdo;
     $tentaivas = 0;
 
     $code_nome = gerar($name,$tentaivas);
-    $sql = "SELECT * FROM usuarios WHERE code_nome = '$code_nome'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+
+    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE code_nome = '$code_nome'");
+    $sql->execute();
+    if ($sql->rowCount() > 0) {
         do {
             $tentaivas++;
             $code_nome = gerar($name,$tentaivas);
-            $sql = "SELECT * FROM usuarios WHERE code_nome = '$code_nome'";
-            $result = $conn->query($sql);
-        } while ($result->num_rows > 0);
+
+            $sql = $pdo->prepare("SELECT * FROM usuarios WHERE code_nome = '$code_nome'");
+            $sql->execute();
+        } while ($sql->rowCount() > 0);
     }
 
-    $conn->close();
     return $code_nome;
 }
 ?>

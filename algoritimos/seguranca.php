@@ -8,7 +8,7 @@ function filtro($text)
     }
     $f = Faker\Factory::create("pt_BR");
 
-    $text = filter_var($text, FILTER_SANITIZE_STRING);
+    $text = filter_var($text, 513);
 
     if (str_contains($text,"=texto:")) {
         $text = str_replace("=texto:",$f->text(),$text);
