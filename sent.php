@@ -1,44 +1,4 @@
 <?php
-if (isset($_POST['btn_code'])) {
-    $dados['descricao'] = filtro($_POST['descricao']);
-    $dados['titulo'] = filtro($_POST['titulo']);
-    $dados['linguagem'] =  filtro($_POST['linguagen']);
-    $dados['code'] = $_POST['code'];
-    $dados['docs'] = array();
-
-    if (isset($_FILES['doc']) && $_FILES['doc']['name'][0] != NULL) {
-        $tmp = $_FILES['doc']['tmp_name'];
-        $nome = $_FILES['doc']['name'];
-        $type = $_FILES['doc']['type'];
-        $size = $_FILES['doc']['size'];
-        $a =0;
-        while ($a < count($nome)) {
-            $ext = strtolower(substr($nome[$a], -4));
-            if ($ext[0] != ".") {$ext = "." . $ext;}
-            $nome_doc = "IMG-".$a ."-". $_SESSION['id_user'] . "-" . date("Y.m.d-H.i.s") . $ext;
-            array_push($dados['docs'],array("indereco"=>$nome_doc,"name"=>$nome[$a],"tmp_name"=>$tmp[$a],"type"=>$type[$a],"size"=>$size[$a]));
-            $a++;
-        }
-        $doc = true;
-    }else{ $nome_img = NULL;}
-
-    $postar_codigo = new postar_codigo;
-    $indereco = "../media/codes/";
-
-    if ($id_versao = $postar_codigo->postar_codigo($dados)) {
-
-        if (isset($_POST['code'])) {
-            
-        }elseif(isset($_FILES['arquivos']['tmp_name'])) {
-            $carregar_codigo = new carregar_codigo;
-            $carregar_codigo->dir = $indereco; 
-            $carregar_codigo->dir_nome = "projecto_".$id_versao;
-            $carregar_codigo->carregar($_FILES['arquivo']['tmp_name']);
-        }
-    }else {
-        echo "erro ao postar o codigo tente novamente";
-    }
-}
 if (isset($_POST['btn_pbl'])) {
     $texto = filtro($_POST['texto']);
     if (!isset($id_comunidade)) {

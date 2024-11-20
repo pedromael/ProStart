@@ -27,7 +27,6 @@ class postes extends process
         parent::__construct();
         $this->link = conn();
         $this->comunidade = new comunidade;
-        $this->codigo = new codigos;
         $this->codigo->indereco = '../';
     }
     public function poste($id){
@@ -406,14 +405,13 @@ class postes extends process
         if ($partilha->rowCount() >= 1) {
             $partilha = $partilha->fetch();
             $id_pbl_partilha = $partilha['id2'];
-            $partilha = $this->pdo->execute($this->link, "SELECT * FROM pbl WHERE id_pbl =:id");
+            $partilha = $this->pdo->execute("SELECT * FROM pbl WHERE id_pbl =:id");
             $partilha->bindValue(":id", $id_pbl_partilha);
             $partilha->execute();
-            $partilha = $partilha->fetch();
+            return $partilha->fetch();
         }else{
             return false;
         }
-        return $partilha;
     }
 }
 ?>
