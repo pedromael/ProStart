@@ -11,7 +11,7 @@
 
 ### Banco de Dados  
 - **MySQL**: Armazenamento principal dos dados estruturados.  
-- Arquivo de configuração inicial disponível em `src/bd.sql`.  
+- Arquivo de configuração inicial disponível em `src/banco de dados`.  
 
 ### Planejado  
 - **MongoDB**: Será integrado futuramente para o armazenamento e manipulação de dados que contêm mídias.  
