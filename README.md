@@ -34,7 +34,7 @@ ProStart/
    cd ProStart
    ```
 2. Configure o banco de dados MySQL:  
-   - Importe o arquivo `src/bd.sql` no seu servidor MySQL.  
+   - Importe o arquivo `src/banco de dados/pro_start.sql e pro_start_outros.sql` no seu servidor MySQL.  
    ```bash
    mysql -u seu-usuario -p seu-banco-de-dados < src/bd.sql
    ```
