@@ -5,34 +5,49 @@ if (isset($_POST['btn_pbl'])) {
         $id_comunidade = 0;
     }
     $doc = false;
+    $imagens = array();
+
+    // Verificando se o formulário tem arquivos enviados
     if (isset($_FILES['doc']) && $_FILES['doc']['name'][0] != NULL) {
         $nome = $_FILES['doc']['name'];
         $tmp = $_FILES['doc']['tmp_name'];
         $type = $_FILES['doc']['type'];
         $size = $_FILES['doc']['size'];
-        $a =0;
-        $imagens = array();
+        $a = 0;
 
+        // Loop para processar cada imagem enviada
         while ($a < count($nome)) {
             $ext = strtolower(substr($nome[$a], -4));
             if ($ext[0] != ".") {
                 $ext = "." . $ext;
             }
-            $nome_img = "IMG-".$a ."-". $_SESSION['id_user'] . "-pbl-" . date("Y.m.d-H.i.s") . $ext;
-            array_push($imagens,array("indereco"=>$nome_img,"name"=>$nome[$a],"tmp_name"=>$tmp[$a],"type"=>$type[$a],"size"=>$size[$a]));
+            $nome_img = "IMG-" . $a . "-" . $_SESSION['id_user'] . "-pbl-" . date("Y.m.d-H.i.s") . $ext;
+
+            // Armazenando as informações da imagem
+            array_push($imagens, array(
+                "indereco" => $nome_img,
+                "name" => $nome[$a],
+                "tmp_name" => $tmp[$a],
+                "type" => $type[$a],
+                "size" => $size[$a]
+            ));
+
             $a++;
         }
+
         $dir = 'media/img/';
         $doc = true;
-    }else {
+    } else {
         $nome_img = NULL;
     }
+
     if (!empty($texto) || $doc) {
-        if (true) {
-            if (isset($_FILES['doc']) && isset($imagens)) {
+        if (true) {  // Este "if (true)" é redundante, pode ser removido
+            // Processamento do upload de imagens
+            if (isset($_FILES['doc']) && !empty($imagens)) {
                 foreach ($imagens as $imagen) {
-                    $_FILES['doc'] = $imagen;
-                    if (!move_uploaded_file($_FILES['doc']['tmp_name'], $dir . $_FILES['doc']['indereco'])) {
+                    // Corrigido: Não precisa redefinir $_FILES['doc'], use diretamente $imagen
+                    if (!move_uploaded_file($imagen['tmp_name'], $dir . $imagen['indereco'])) {
                         ?>
                         <script>
                             window.location.href="index.php?pbl=erro_img";
@@ -40,28 +55,31 @@ if (isset($_POST['btn_pbl'])) {
                         <?php
                     }
                 }
-                
             }
-            if  ($id_pbl = $c->publicar($texto,$id_comunidade,$nome_img)) {
+
+            // Publicando o texto e os arquivos
+            if ($id_pbl = $c->publicar($texto, $id_comunidade, $nome_img)) {
                 if (isset($id_comunidade)) {
                     if ($nome_img != NULL) {
                         $tipo = "pbl";
+                        // Carregar documentos após a publicação
                         foreach ($imagens as $imagen) {
-                            if ($c->carregar_documento($id_pbl,$tipo,$imagen['indereco'])) {
-
-                            }else {
-                                echo "falha a carregar documento";
+                            if ($c->carregar_documento($id_pbl, $tipo, $imagen['indereco'])) {
+                                // Documento carregado com sucesso
+                            } else {
+                                echo "Falha ao carregar documento.";
                             }
                         }
                         unset($_FILES['doc']);
                         unset($imagens);
                     }
+
                     ?>
                     <script>
                         window.location.href="index.php?cmndd=<?=$id_comunidade?>&pbl=<?=criptografar($id_pbl)?>";
                     </script>
                     <?php
-                }else {
+                } else {
                     ?>
                     <script>
                         window.location.href="index.php?pbl=<?=criptografar($id_pbl)?>";
@@ -69,11 +87,12 @@ if (isset($_POST['btn_pbl'])) {
                     <?php
                 }
             } else {
-                echo "ocorreu algum erro ao realizar publicacao";
+                echo "Ocorreu algum erro ao realizar publicação.";
             }
-        }    
+        }
     }
 }
+
 if (isset($_POST['btn_pbl_comunidade'])) {
     $texto = filtro($_POST['texto']);
     if (!isset($id_comunidade)) {
