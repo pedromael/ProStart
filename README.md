@@ -30,7 +30,7 @@ ProStart/
 ### Passo a Passo  
 1. Clone o repositório:  
    ```bash
-   git clone https://github.com/seu-usuario/ProStart.git
+   git clone https://github.com/pedromael/ProStart.git
    cd ProStart
    ```
 2. Configure o banco de dados MySQL:  
