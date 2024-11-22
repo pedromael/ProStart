@@ -1,5 +1,3 @@
-
-
 <div class="info_pbl <?="pbl_info",$id_pbl?> remover">
     <div class="corpo">
         <h4>mais</h4>

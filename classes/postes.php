@@ -20,14 +20,12 @@ class postes extends process
     public $para;
     private $comunidade;
     public $destino;
-    private $codigo;
 
     function __construct()
     {
         parent::__construct();
         $this->link = conn();
         $this->comunidade = new comunidade;
-        $this->codigo->indereco = '../';
     }
     public function poste($id){
         $sql = $this->pdo->prepare("SELECT pbl.*,id2 AS id_partilha,COALESCE(p.tipo,'null') AS tipo_partilha FROM pbl 
@@ -202,7 +200,7 @@ class postes extends process
                                 if ($row['tipo_partilha'] == 'pbl') {
                                     $this->mostrar($this->poste($row['id_partilha']),false,false,true);
                                 }elseif($row['tipo_partilha'] == 'code') {
-                                    $this->codigo->mostrar($this->codigo->codigo($row['id_partilha']),4,'feed',NULL,1);
+                                    //$this->codigo->mostrar($this->codigo->codigo($row['id_partilha']),4,'feed',NULL,1);
                                 }
                                 ?>
                             </div>
@@ -405,7 +403,7 @@ class postes extends process
         if ($partilha->rowCount() >= 1) {
             $partilha = $partilha->fetch();
             $id_pbl_partilha = $partilha['id2'];
-            $partilha = $this->pdo->execute("SELECT * FROM pbl WHERE id_pbl =:id");
+            $partilha = $this->pdo->prepare("SELECT * FROM pbl WHERE id_pbl =:id");
             $partilha->bindValue(":id", $id_pbl_partilha);
             $partilha->execute();
             return $partilha->fetch();

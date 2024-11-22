@@ -15,7 +15,7 @@ class stories extends informacoes_usuario
     }
     private function verificar_all_stories($id_user)
     {
-        $sql = $this->pdo->prepare("SELECT DISTINCT stories.id_user FROM stories
+        $sql = $this->pdo->prepare("SELECT DISTINCT stories.id_user, stories.data FROM stories
                         
         INNER JOIN contacto AS c ON ((c.id_user = :user AND c.id_user_dest = stories.id_user)
         OR (c.id_user = stories.id_user AND c.id_user_dest = :user) OR stories.id_user = :user)
@@ -27,7 +27,8 @@ class stories extends informacoes_usuario
         OR stories.id_user = :user
         ORDER BY stories.data desc");
         $sql->bindValue(":user", $id_user);
-        $sql->execute();
+        if(!$sql->execute()) return false;
+
         $this->stories = $sql->fetchAll();
     }
     public function storie_info($id_user,$visualizar = false){

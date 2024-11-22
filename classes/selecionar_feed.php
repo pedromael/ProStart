@@ -9,7 +9,7 @@ class selecionar_feed
     private $numero_maximo_de_codigos = 1;
     public function __construct(){
         $this->postes = new postes;
-        $this->codigos = new codigos; 
+        //$this->codigos = new codigos; 
     }
     public function selecionar_poste($tipo_de_feed){
         if ($tipo_de_feed == "perfil") {
@@ -35,13 +35,13 @@ class selecionar_feed
                 //$a++;
             }
         }elseif($tipo_de_feed == "codigos"){
-            $a = 0;
-            while ($a <= $this->quantidade_de_postes) {
-                if ($this->codigos->pegar_codigo_para_poste() == 404) {
-                    break;
-                }
-                // $a++;
-            }
+            // $a = 0;
+            // while ($a <= $this->quantidade_de_postes) {
+            //     if ($this->codigos->pegar_codigo_para_poste() == 404) {
+            //         break;
+            //     }
+            //     // $a++;
+            // }
         }else {
             $a = 0;
             //$divisao = round($this->quantidade_de_postes / 2)-1;
@@ -52,19 +52,20 @@ class selecionar_feed
                 if ($this->quantidade_de_postes <= $a) {
                     return 404;
                 }
-                if ($a == 1) {
-                    if ($this->codigos->pegar_codigo_para_poste() == 404) { 
-                        if ($this->postes->procurar() == 404) {
-                            break;
-                        }
-                    }
-                }else {
-                    if ($this->postes->procurar() == 404) {
-                        if ($this->codigos->pegar_codigo_para_poste() == 404) {
-                           break;
-                        }
-                    }
-                }
+                $this->postes->procurar();
+                // if ($a == 1) {
+                //     if ($this->codigos->pegar_codigo_para_poste() == 404) { 
+                //         if ($this->postes->procurar() == 404) {
+                //             break;
+                //         }
+                //     }
+                // }else {
+                //     if ($this->postes->procurar() == 404) {
+                //         if ($this->codigos->pegar_codigo_para_poste() == 404) {
+                //            break;
+                //         }
+                //     }
+                // }
                 $a++;
             }
             return true;

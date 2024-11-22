@@ -23,7 +23,8 @@ class verificar_logados extends conexao
     }
     public function logados()
     {
-        $sql = "SELECT DISTINCT u.id_user, u.nome, id_login FROM usuarios u
+        $sql = "SELECT DISTINCT u.id_user, u.nome, MAX(id_login) AS max_id_login
+        FROM usuarios u
         LEFT JOIN contacto a ON ((a.id_user = u.id_user AND a.id_user_dest = :id) 
             OR (a.id_user_dest = u.id_user AND a.id_user = :id))
         LEFT JOIN $this->bdnome2.contacto_aceite aa ON (aa.id_contacto = a.id_contacto)
@@ -34,7 +35,8 @@ class verificar_logados extends conexao
         AND ((a.id_user = u.id_user AND a.id_user_dest = :id) 
             OR (a.id_user_dest = u.id_user AND a.id_user = :id))
         GROUP BY u.id_user, u.nome
-        ORDER BY MAX(id_login) DESC";
+        ORDER BY max_id_login DESC";
+
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":id", $this->id_user);
         $sql->execute();
@@ -43,7 +45,7 @@ class verificar_logados extends conexao
         if ($sql->rowCount()) {
             foreach ($rows as $row) {
                 $numero_de_contactos++;
-                $this->mostrar($row['id_user'],$row['id_login']);
+                $this->mostrar($row['id_user'],$row['max_id_login']);
             }
         } else {return array();}
         return $numero_de_contactos;
