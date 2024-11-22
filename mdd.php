@@ -41,11 +41,16 @@ $areas_programacao = mysqli_query(conn(), "SELECT * FROM $bdnome2.areas_programa
             background-color: #28a745;
             color: white;
         }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+        }
     </style>
 </head>
 <body id="inicio">
-    <nav class="nw-100 nav_login">
+    <nav class="nw-100 nav_login d-flex justify-content-between align-items-center">
         <strong><h1>Melhor experiência na PRO-Start</h1></strong>
+        <a href="./perfil" class="btn btn-back">Voltar</a>
     </nav>
     
     <div id="corpo_inicio">
