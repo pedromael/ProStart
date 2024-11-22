@@ -1,0 +1,5 @@
+# Ignorar tudo dentro do diretório img
+media/img/*
+
+# Mas não ignorar essas duas imagens específicas
+!img/sem_img_no_perfil.jpeg
