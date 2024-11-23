@@ -283,46 +283,55 @@ function pegar_tema() {
     }
     return "branco";
 }
-function resumir_data($data_p)
+function resumir_data($data_p): bool|string
 {
-    $data = strtotime(date("Y-m-d H:i:s")) - strtotime($data_p) - 3600;
-    $segundo = $data;
-    $minuto = $segundo/60;
-    $hora = $minuto/60;
-    $dias = $hora/24;
-    $meses = $dias/30;
+    $data_atual = strtotime(date("Y-m-d H:i:s")); 
+    $data = $data_atual - strtotime($data_p) + 3600; // Remove 1 hora, pode ser removido se não necessário.
     
+    $segundo = $data;
+    $minuto = $segundo / 60;
+    $hora = $minuto / 60;
+    $dias = $hora / 24;
+    $meses = $dias / 30;
+    
+    // Se foi criado agora (menos que 5 segundos)
     if ($segundo < 5) {
         return "agora";
     }
-    if ($segundo > 5 && $segundo < 60) {
-        return "a ".(int)$segundo." segundos";
+
+    // Se foi criado entre 5 segundos e 1 minuto
+    if ($segundo < 60) {
+        return "há ".(int)$segundo." segundos";
     }
-    if ($minuto >= 1 && $minuto <= 60) {
-        if ($minuto >= 2) {
-            return (int)$minuto." min";
-        }else {
-            return (int)$minuto." min";
-        }
+
+    // Se foi criado entre 1 e 60 minutos
+    if ($minuto < 60) {
+        return "há ".(int)$minuto." min";
     }
-    if ($hora >= 1 && $hora <= 24) {
-        return date("H", strtotime($data_p))."H";
+
+    // Se foi criado entre 1 e 24 horas
+    if ($hora < 24) {
+        return "há ".(int)$hora."h";
     }
-    if (7 > $dias && $dias >= 1) {
-        if ($dias >= 2) {
-            return (int)$dias." dias";
-        }else {
-            return (int)$dias." dia";
-        }
+
+    // Se foi criado entre 1 e 7 dias
+    if ($dias >= 1 && $dias < 7) {
+        return "há ".(int)$dias." dia".($dias > 1 ? "s" : "");
     }
-    if ($dias >= 7 && $meses <= 6) {
-        return date("d/m", strtotime($data_p));
+
+    // Se foi criado entre 7 dias e 6 meses
+    if ($dias >= 7 && $meses < 6) {
+        return "em ".date("d/m", strtotime($data_p));
     }
-    if ($meses > 6) {
-        return date("d/m/Y", strtotime($data_p));
+
+    // Se foi criado há mais de 6 meses
+    if ($meses >= 6) {
+        return "em ".date("d/m/Y", strtotime($data_p));
     }
-    return false;
+
+    return false; // Caso nenhum dos casos anteriores se encaixe
 }
+
 function pegar_imagem_em_cache($URL_imagem,$codigo_de_cache) {
     $pasta_de_cache = 'image_cache/';
     $cacheFilePath = $pasta_de_cache.$codigo_de_cache;

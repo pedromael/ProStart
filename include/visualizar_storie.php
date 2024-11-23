@@ -27,7 +27,7 @@ $dados = $storie->storie_info($data['id_user'], true);
 
                     <!-- Aba de texto sobrepondo a imagem (parte inferior) -->
                     <div class="position-absolute bottom-0 start-50 translate-middle-x text-white text-center w-100 py-2">
-                        <strong>Viva ao Wik</strong>
+                        <strong>descricao</strong>
                     </div>
                 </div>
             </div>

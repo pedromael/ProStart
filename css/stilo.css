@@ -703,7 +703,7 @@ a{
     top: 0;
     left: 0;
     z-index: 20;
-    background-color: rgba(2, 29, 82, 0.929);
+    background-color: rgba(255, 255, 255, 0.929);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -727,12 +727,13 @@ a{
 }
 .visualizar_storie .removedor{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 3px;
+    right: 3px;
     padding: 10px 20px;
     font-size: 23pt;
     z-index: 2;
-    background-color: #ff000023;
+    color: var(--char_sec);
+    background-color: var(--cor_sec);
     border-radius: 50%;
 }
 #mais_pbl{
