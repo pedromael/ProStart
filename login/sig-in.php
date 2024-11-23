@@ -40,7 +40,9 @@ $c = new sig_in;
                                 <p class="text-center">Pais De Residencia</p>
                                 <select class="form-control" name="p" id="pais">
                                     <?php
-                                    $paises = mysqli_query(conn(),"SELECT * FROM $bdnome2.pais ORDER BY nome");
+                                    //Preparando os dados para o select país
+                                    $select_pais = "SELECT * FROM pro_start_outros.pais ORDER BY nome;";                    
+                                    $paises = mysqli_query(conn(), $select_pais);
                                     while ($pais = mysqli_fetch_assoc($paises)) {
                                         if ($pais['nome'] == "Angola") {
                                             ?>
