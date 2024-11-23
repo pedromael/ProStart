@@ -35,6 +35,12 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
     <link rel="stylesheet" href="bibliotecas/codemirror-5.7/theme/base16-dark.css">
     <link rel="stylesheet" href="bibliotecas/codemirror-5.7/theme/dracula.css">
     <link rel="stylesheet" href="bibliotecas/codemirror-5.7/theme/eclipse.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
     <script src="bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
     <script src="bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
