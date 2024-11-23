@@ -73,7 +73,7 @@ class comunidade extends conexao
         LEFT JOIN $this->bdnome2.comunidade_integrante AS i ON 
         ((i.id_comunidade = c.id_comunidade AND i.id_user = $id_user) OR (c.id_user = $id_user))
         WHERE (i.id_comunidade = c.id_comunidade AND i.id_user = $id_user) OR (c.id_user = $id_user)
-        ORDER BY i.id_integrante DESC");
+        ORDER BY c.id_comunidade DESC");
         while ($row = mysqli_fetch_assoc($sql)) {
             $num++;
             $this->mostrar_comunidades($row,'minhas');

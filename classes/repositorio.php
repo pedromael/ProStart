@@ -46,9 +46,9 @@ class repositorio extends conexao
         }
 
         if($tipo == "f"){//ficheiros
-            $diretorio = "../arquivos/repositorio/".repositorio($id)['id_repositorio']."/";
+            $diretorio = "../arquivos/repositorio/".$this->repositorio($id)['id_repositorio']."/";
             $ficheiros = scandir($diretorio);
-            $dados = [0,array()]
+            $dados = [0,array()];
             $dados = pegar($diretorio, $ficheiros, $dados);
             return $dados;
         }else if($tipo == "r"){//repositorio
