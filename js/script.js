@@ -101,57 +101,7 @@ function mostrar_lista_amigos(id_user) {
     var jsonData = JSON.stringify(data);
     xhr.send(jsonData);
 }
-function sugerir_code(id_code,editor) {
-    var code = editor.getValue();
-    var descricao = document.querySelector("#corpo_coder textarea.descricao").value;
-    if (code.length <= 0 || descricao.length <= 0) 
-    {return false;}
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', indereco+'include/sugerir_code.php', true)
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        aba_alert("#dar_sugestao_code");
-        return true;
-      }
-    };
-    var data = {
-        id_code: id_code,
-        code: code,
-        descricao: descricao
-    }
-    var jsonData = JSON.stringify(data);
-    xhr.send(jsonData);
-}
-function postar_nova_versao_code(id_code,editor){
-    if (editor > 0) {
-        var code = editor;
-        var sugestao = "sim";
-    }else{
-        var code = editor.getValue();
-        var sugestao = "nao";
-    }
-    var descricao = document.querySelector("#actualizar_sugestao_code textarea.descricao").value;
-    if (code.length <= 0 || descricao.length <= 0) 
-    {return false;}
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', indereco+'include/postar_nova_versao_code.php', true)
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        alert(xhr.responseText);
-        return true;
-      }
-    };
-    var data = {
-        id_code: id_code,
-        code: code,
-        descricao: descricao,
-        e_sugestao: sugestao
-    }
-    var jsonData = JSON.stringify(data);
-    xhr.send(jsonData);
-}
+
 function mudar_mode_coder() {
     var corpo = document.querySelector("#codigo_insert .codigo");
     var texto = '<div class="texto">carregue aqui o seu documento ou uma pasta</div>';

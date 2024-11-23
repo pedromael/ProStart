@@ -123,7 +123,24 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
         <div class="container overflow-y-auto"></div>
     </div>
     <div class="corpos">
-        <div class="corpo3 crp"></div>
+        <div class="corpo3 crp">
+            <div id="container" class="overflow-y-auto">
+                <div> 
+                    <div class="texto_interativo">
+                        aque apareceram <a href="" class="destaque"><span>codigos</span></a>,
+                        sugeridos para vc
+                    </div>
+                    <div class="texto_interativo">
+                        adiciona <a href="../contactos/" class="destaque"><span>contactos</span></a>, para podermos sugerir
+                        codigos relacionados a ele. <a href="" class="destaque"><span>saber mais</span></a>
+                    </div>
+                    <div class="texto_interativo">
+                        entra em <a href="../comunidade/" class="destaque"><span>comunidades</span></a>, e expande tua rede
+                        de interacoes...
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="corpo" class="crp">
             <div id="alerta" class="novo_storie remover">
                 <div class="modal modal-sheet d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">

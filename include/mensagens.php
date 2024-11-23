@@ -10,7 +10,7 @@ require "../algoritimos/atalho.php";
     ?>
 </div>
 <div id="corpo_lista_sms" class="overflow-y-auto">
-    <div>
+    <div> 
     <?php
     $listagem = new lista_mensagens($data['indereco']);
     $numero_de_sms_encontradas = $listagem->getListaAmigos();
