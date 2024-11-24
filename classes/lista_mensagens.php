@@ -46,33 +46,46 @@ class lista_mensagens extends conexao
             $outro_indereco = "./";
         }
         ?>
-        <a href="chat.php">
-            <div class="sms">
-                <div id="img_user" class="c1 cp1" style=" background-image: url(<?=$this->indereco?>media/img/<?=$imagen?>);"></div>                <div class="c1 cp2">
-                <div class="c2 nome"><a href="<?=$this->indereco?>perfil/?user=<?=criptografar($id_dest)?>"><?=$sqll['nome']?></a></div>
-                <?php
-                if ($this->process->verificar_qtd("user_chat",$id_dest) > 0) {
-                    ?>
-                    <div class="qtd_sms"><?=$this->process->verificar_qtd("user_chat",$id_dest)?></div>
-                    <?php
-                }
-                ?>
-                    <a href="<?=$outro_indereco?>chat.php?user=<?=criptografar($id_dest)?>">
-                        <div class="c2 msg">
-                            <?php
+        <a href="chat.php?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
+            <div class="d-flex align-items-center p-2 border-bottom">
+                <!-- Imagem do usuário -->
+                <div class="flex-shrink-0">
+                    <img src="<?=$this->indereco?>media/img/<?=$imagen?>" 
+                        alt="Foto do usuário" 
+                        class="rounded-circle" 
+                        style="width: 50px; height: 50px; object-fit: cover;">
+                </div>
+
+                <!-- Informações do usuário -->
+                <div class="ms-3 flex-grow-1">
+                    <!-- Nome do usuário -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">
+                            <?=$sqll['nome']?>
+                        </h6>
+                        <!-- Quantidade de mensagens não lidas -->
+                        <?php if ($this->process->verificar_qtd("user_chat", $id_dest) > 0) { ?>
+                            <span class="badge bg-danger">
+                                <?=$this->process->verificar_qtd("user_chat", $id_dest)?>
+                            </span>
+                        <?php } ?>
+                    </div>
+
+                    <!-- Última mensagem -->
+                    <small class="text-muted">
+                        <?php
                             if (isset($sms['texto'])) {
                                 if ($sms['id_user'] == $id_user) {
-                                    echo "tu: ".$texto;
-                                }else {
-                                    echo "ele: ".$texto;
+                                    echo "Você: " . htmlspecialchars($texto);
+                                } else {
+                                    echo htmlspecialchars($texto);
                                 }
-                            }else {
+                            } else {
                                 echo "...";
                             }
-                            ?>
-                        </div>
-                    </a>
-                </div>  
+                        ?>
+                    </small>
+                </div>
             </div>
         </a>
         <?php

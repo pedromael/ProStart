@@ -103,37 +103,30 @@
     require "../include/nav.php";
     ?>
     <div class="corpos">
-        <div id="aps">
-            <h5 style="color: transparent;">.</h5>
-            <div class="inline">
-                <a href="./index.php" class="link btn_simples 
-                <?php
-                    if (!isset($_GET['abrir'])) {
-                        echo "selecionado";
-                    }
-                ?>
-                ">encontrar novos</a>
-            </div>
-            <div class="inline">
-                <?php
-                if ($c->verificar_qtd("pdd",$id_user) > 0) {
-                    ?>
-                    <a href="index.php?abrir=pdd" class="link btn_simples
-                    <?php
-                        if (isset($_GET['abrir'])) {
-                            if ($_GET['abrir'] == 'pdd') {
-                                echo "selecionado";
-                            } 
-                        }
-                    ?>
-                    ">
-                            pedidos de contactos (<span><?=$c->verificar_qtd("pdd",$id_user)?></span>)
-                    </a>
-                    <?php
-                }
-                ?>
-            </div>
+    <div id="aps" class="container-fluid bg-light py-3 shadow-sm">
+    <div class="row align-items-center">
+        <!-- Aba Centralizada -->
+        <div class="col-md-6 d-flex justify-content-center">
+            <a href="./index.php" 
+               class="btn btn-outline-primary px-4 fw-bold 
+               <?php if (!isset($_GET['abrir'])) echo 'active'; ?>">
+                Encontrar Novos
+            </a>
         </div>
+
+        <!-- Aba à Direita -->
+        <div class="col-md-6 d-flex justify-content-center">
+            <?php if ($c->verificar_qtd("pdd", $id_user) > 0) { ?>
+                <a href="index.php?abrir=pdd" 
+                   class="btn btn-outline-primary px-4 fw-bold 
+                   <?php if (isset($_GET['abrir']) && $_GET['abrir'] === 'pdd') echo 'active'; ?>">
+                    Pedidos de Contatos (<span><?=$c->verificar_qtd("pdd", $id_user)?></span>)
+                </a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
         
         <div id="corpo_contactos">
             <?php
@@ -178,22 +171,42 @@
 
                             $imagen = pegar_foto_perfil("perfil",$id_dest);
                             ?>
-                            <div class="sms">
-                                    <div id="img_user" class="c1 cp1" style=" background-image: url(../media/img/<?=$imagen?>);"></div>                    
-                                <div class="c1 cp2">
-                                    <div class="c2 nome"><a href="../perfil/?user=<?=criptografar($id_dest)?>"><?=$user['nome']?></a></div>
-                                    <a href="./index.php?abrir=pdd&id=<?=criptografar($row['id_contacto'])?>&nome=<?=criptografar($user['nome'])?>&case=apagar">
-                                        <div class="c2 cont btn-sec-red">
-                                            eliminar
-                                        </div>
+                            <div class="d-flex align-items-center p-3 border-bottom">
+                                <!-- Imagem do usuário -->
+                                <div class="flex-shrink-0">
+                                    <div class="rounded-circle" 
+                                        style="background-image: url('../media/img/<?=$imagen?>'); 
+                                                width: 50px; 
+                                                height: 50px; 
+                                                background-size: cover; 
+                                                background-position: center;">
+                                    </div>
+                                </div>
+
+                                <!-- Informações do usuário -->
+                                <div class="ms-3 flex-grow-1">
+                                    <h6 class="mb-1">
+                                        <a href="../perfil/?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
+                                            <?=$user['nome']?>
+                                        </a>
+                                    </h6>
+                                </div>
+
+                                <!-- Botões de ação -->
+                                <div class="d-flex">
+                                    <!-- Botão aceitar -->
+                                    <a href="./index.php?abrir=pdd&id=<?=criptografar($row['id_contacto'])?>&nome=<?=criptografar($user['nome'])?>&case=aceitar" 
+                                    class="btn btn-primary btn-sm me-2">
+                                        Aceitar
                                     </a>
-                                    <a href="./index.php?abrir=pdd&id=<?=criptografar($row['id_contacto'])?>&nome=<?=criptografar($user['nome'])?>&case=aceitar">
-                                        <div class="c2 cont btn-pri">
-                                            aceitar
-                                        </div>
+                                    <!-- Botão eliminar -->
+                                    <a href="./index.php?abrir=pdd&id=<?=criptografar($row['id_contacto'])?>&nome=<?=criptografar($user['nome'])?>&case=apagar" 
+                                    class="btn btn-danger btn-sm">
+                                        Eliminar
                                     </a>
-                                </div>  
+                                </div>
                             </div>
+
                             <?php
                         }
                     }
@@ -250,32 +263,50 @@
                     $imagen = pegar_foto_perfil("perfil",$id);
                     $nome = $pessoas_sugerida['nome'];
                     ?>
-                        <div class="sms">
-                            <div id="img_user" class="c1 cp1" style=" background-image: url(../media/img/<?=$imagen?>);"></div>
-                            <div class="c1 cp2">
-                                <div class="c2 nome"><a href="../perfil/?user=<?=criptografar($id)?>"><?=$pessoas_sugerida['nome']?></a></div>
-                                <div class="c2 cont btn-sec" style="border: none; font-size: 11pt;">
-                                    <div>
-                                        <?php
-                                        if ($pessoas_sugerida['qtd'] <= 0) {
-                                            # code...
-                                        }elseif($pessoas_sugerida['qtd'] == 1){
-                                            echo $pessoas_sugerida['qtd']," amigo em comun";
-                                        }elseif($pessoas_sugerida['qtd'] > 1 && $pessoas_sugerida['qtd']  <= 15) {
-                                            echo $pessoas_sugerida['qtd']," amigos em comun";
-                                        }else {
-                                            echo "15+ amigos em comun";
-                                        }
-                                        ?>
-                                    </div>
+                        <div class="d-flex align-items-center p-3 border-bottom">
+                            <!-- Imagem do usuário -->
+                            <div class="flex-shrink-0">
+                                <div class="rounded-circle" 
+                                    style="background-image: url('../media/img/<?=$imagen?>'); 
+                                            width: 50px; 
+                                            height: 50px; 
+                                            background-size: cover; 
+                                            background-position: center;">
                                 </div>
-                                <a href="./index.php?user=<?=criptografar($id)?>&nome=<?=criptografar($nome)?>">
-                                    <div class="c2 cont btn-pri">
-                                        <div>fazer pedido</div>
-                                    </div>
+                            </div>
+
+                            <!-- Informações do usuário -->
+                            <div class="ms-3 flex-grow-1">
+                                <h6 class="mb-1">
+                                    <a href="../perfil/?user=<?=criptografar($id)?>" class="text-decoration-none text-dark">
+                                        <?=$pessoas_sugerida['nome']?>
+                                    </a>
+                                </h6>
+                                <small class="text-muted">
+                                    <?php
+                                    $AC = verificar_contactos_em_comum($_SESSION['id_user'], $id);
+                                    if ($AC <= 0) {
+                                        // No mutual friends
+                                    } elseif ($AC == 1) {
+                                        echo $AC, " amigo em comum";
+                                    } elseif ($AC > 1 && $AC <= 15) {
+                                        echo $AC, " amigos em comum";
+                                    } else {
+                                        echo "15+ amigos em comum";
+                                    }
+                                    ?>
+                                </small>
+                            </div>
+
+                            <!-- Botão de ação -->
+                            <div>
+                                <a href="./index.php?user=<?=criptografar($id)?>&nome=<?=criptografar($nome)?>" 
+                                class="btn btn-primary btn-sm">
+                                    Fazer Pedido
                                 </a>
-                            </div>  
+                            </div>
                         </div>
+
                     <?php
                 }
             }

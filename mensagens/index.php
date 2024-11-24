@@ -100,7 +100,7 @@ $imagen = pegar_foto_perfil("perfil",$id_user);
     ?>
     <div class="corpos">
       <div id="corpo" class="crp">
-        <div id="corpo_lista_sms" class="overflow-y-auto">
+        <div class="container overflow-y-auto">
           <?php
           $listagem = new lista_mensagens("../");
           $numero_de_sms_encontradas = $listagem->getListaAmigos();
