@@ -1,0 +1,55 @@
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral */
+body, html {
+    height: 100%;
+    background-color: #121212; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
+}
+
+/* Barra de navegação */
+.navbar {
+    height: 60px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #cccccc !important;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #121212;
+}
+
+/* Menu lateral */
+.menu-lateral {
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #333333;
+    color: #ffffff;
+}
+
+/* Conteúdo principal */
+.conteudo-principal {
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cccccc;
+}
