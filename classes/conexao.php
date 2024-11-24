@@ -8,6 +8,7 @@ class conexao
     public $bdpass = "senha_segura";
     public $bduser = "phpmyadmin_user";
     public $bdnome2 = "pro_start_outros";
+    public $bdrepositorio = "pro_start_repositorios";
 
     public function __construct()
     {

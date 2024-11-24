@@ -81,7 +81,7 @@
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat actualizar"></div>
+                        <div class="info_qtd_chat actualizar"></div>
                         <?php
                     }
                     ?>              
@@ -97,7 +97,7 @@
                     <?php
                 }else {
                     ?>
-                    <div style="" class="info_qtd_notific actualizar"></div>
+                    <div class="info_qtd_notific actualizar"></div>
                     <?php
                 }
                 ?>   
@@ -140,28 +140,27 @@
             </div>
             
         </div>
-        <a href="lista.php?abrir=nova">
-            <div class="ops_nova_comunidade btn bg-sec">Criar nova comunidade</div>
-        </a>
+        <div class="container  d-flex justify-content-center align-items-center">
+            <a href="lista.php?abrir=nova">
+                <div class="ops_nova_comunidade btn bg-sec">Criar nova comunidade</div>
+            </a>
+        </div>
         <div class="corpo_metade1 rolagem_vertical">
         <h1 class="titulo1"><a href="./">minhas comunidades</a></h1>
             <?php
-            if ($novos == "nova") {
-                ?>
-                <div id="cadastro">
+            if ($novos == "nova") {?>
+                <div class="card p-4 shadow-lg">
+                    <h4 class="mb-4">Criar Nova Comunidade</h4>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <div>
-                            <p>Nome</p>
-                            <input type="text" name="nome" class="form-control" placeholder="digite o nome da comunidade" required>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome da Comunidade</label>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome da comunidade" required>
                         </div>
-                        <div>
-                            <p>descricao</p>
-                            <textarea name="descricao" class="form-control"></textarea>
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <textarea name="descricao" id="descricao" class="form-control" rows="4" placeholder="Escreva uma breve descrição sobre sua comunidade"></textarea>
                         </div>
-                        <div>
-                            <p></p>
-                            <input type="submit" class="form-control bg-sec" value="prosseguir">
-                        </div>
+                        <button type="submit" class="btn btn-success w-100">Prosseguir</button>
                     </form>
                 </div>
                 <?php
@@ -169,23 +168,23 @@
                     $nome = filtro($_POST['nome']);
                     $descricao = filtro($_POST['descricao']);
                     if (!empty($nome) && !empty($descricao)) {
-                        if ($id = $cmdd->criar_comunidade($nome,$descricao)) {
-                            #header("location: ./?cmndd=".criptografar($id));
+                        if ($id = $cmdd->criar_comunidade($nome, $descricao)) {
                             ?>
-                            <script> 
-                                document.location.href = "./?cmndd=<?=criptografar($id)?>"
-                            </script>
+                            <script>document.location.href = "./?cmndd=<?= criptografar($id) ?>";</script>
                             <?php
-                        }else {
-                            echo "ocorreu um erro na criacao da comunidade";
+                        } else {
+                            echo "<div class='alert alert-danger mt-3'>Ocorreu um erro na criação da comunidade.</div>";
                         }
+                    } else {
+                        echo "<div class='alert alert-warning mt-3'>Por favor, preencha todos os campos.</div>";
                     }
                 }
             }else{
                 ?>
-                <div>
-                <?php
-                $num = $cmdd->minhas_comunidade();
+                <div class="container">
+                    <?php
+                    $num = $cmdd->minhas_comunidade();
+
                     if ($num < 5) {
                         ?>
                         <div class="alert1">
