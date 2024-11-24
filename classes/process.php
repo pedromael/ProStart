@@ -424,5 +424,26 @@ class process extends informacoes_usuario{
             return false;
         }
     }
+    public function alterar_privacidade($id, $tipo)
+    {
+        $sql = $this->pdo->prepare("SELECT id_privado FROM privado WHERE id = :id AND tipo = :t");
+        $sql->bindValue(":id", $id);
+        $sql->bindValue(":t", $tipo);
+        $sql->execute();
+
+        if($sql->rowCount() > 0)
+        {
+            $sql = $this->pdo->prepare("DELETE FROM privado WHERE id = :id AND tipo = :t");
+            $sql->bindValue(":id", $id);
+            $sql->bindValue(":t", $tipo);
+            return $sql->execute() ? true: false; 
+        }
+
+        $sql = $this->pdo->prepare("INSERT INTO privado(id,tipo)
+        VALUES(:id, :t)");
+        $sql->bindValue(":id", $id);
+        $sql->bindValue(":t", $tipo);
+        return $sql->execute() ? true: false;
+    }
 }
 ?>
