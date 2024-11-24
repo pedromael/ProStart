@@ -31,7 +31,7 @@ SyliaGO/
 1. Clone o repositório:  
    ```bash
    git clone https://github.com/pedromael/SyliaGO.git
-   cd ProStart
+   cd SyilaGO
    ```
 2. Configure o banco de dados MySQL:  
    - Importe o arquivo `src/banco de dados/pro_start.sql e pro_start_outros.sql` no seu servidor MySQL.  
