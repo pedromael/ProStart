@@ -1,5 +1,5 @@
-# SYLIA 🚀  
-**sylia** é uma rede social **open source** para programadores. Com ela, você pode compartilhar projetos, conectar-se com outros devs, e explorar uma comunidade focada em tecnologia e desenvolvimento.
+# SyliaGO 🚀  
+**syliaGO** é uma rede social **open source** para programadores. Com ela, você pode compartilhar projetos, conectar-se com outros devs, e explorar uma comunidade focada em tecnologia e desenvolvimento.
 
 ## 🛠 Tecnologias Utilizadas  
 ### Backend  
@@ -18,7 +18,7 @@
 
 ## 📂 Estrutura do Projeto  
 ```
-Sylia/
+SyliaGO/
 
 ## 🚀 Como Usar  
 ### Requisitos  
