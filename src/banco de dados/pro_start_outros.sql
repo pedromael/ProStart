@@ -179,7 +179,7 @@ INSERT INTO `historico_id` (`id_historico`, `id`) VALUES
 CREATE TABLE `lido` (
   `id_lido` int(11) NOT NULL,
   `id_visto` int(11) NOT NULL,
-  `data` int(11) NOT NULL
+  `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
