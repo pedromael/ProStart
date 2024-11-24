@@ -1,5 +1,5 @@
-# ProStart 🚀  
-**ProStart** é uma rede social **open source** para programadores. Com ela, você pode compartilhar projetos, conectar-se com outros devs, e explorar uma comunidade focada em tecnologia e desenvolvimento.
+# SYLIA 🚀  
+**sylia** é uma rede social **open source** para programadores. Com ela, você pode compartilhar projetos, conectar-se com outros devs, e explorar uma comunidade focada em tecnologia e desenvolvimento.
 
 ## 🛠 Tecnologias Utilizadas  
 ### Backend  
@@ -18,7 +18,7 @@
 
 ## 📂 Estrutura do Projeto  
 ```
-ProStart/
+Sylia/
 
 ## 🚀 Como Usar  
 ### Requisitos  
@@ -30,7 +30,7 @@ ProStart/
 ### Passo a Passo  
 1. Clone o repositório:  
    ```bash
-   git clone https://github.com/pedromael/ProStart.git
+   git clone https://github.com/pedromael/Sylia.git
    cd ProStart
    ```
 2. Configure o banco de dados MySQL:  

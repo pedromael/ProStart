@@ -29,7 +29,7 @@ $user = mysqli_fetch_assoc($user);
 <body>
     <nav>
         <div class="linha esq"></div>
-        <div><h1><span class="escrever_automatico" onclick="escrever()"><?=$user['nome']?></span> SEJA BEM VINDO A PRO-START</h1></div>
+        <div><h1><span class="escrever_automatico" onclick="escrever()"><?=$user['nome']?></span> SEJA BEM VINDO A Sylia</h1></div>
         <div class="linha dir"></div>
     </nav>
     <div></div>
