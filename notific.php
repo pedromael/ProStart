@@ -84,8 +84,10 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
     ?>
     <div class="corpos">
       <div id="corpo" class="crp overflow-y-auto">
-          <div class="info">
-            <a href="" class="btn_simples" style="border-top-left-radius: 0; border-top-rigth-radius: 0; border-width: 2px;">marcar todas como lida</a>
+          <div class="container d-flex justify-content-center w-100">
+              <button class="btn btn-link text-decoration-none">
+                  Marcar todas como lidas
+              </button>
           </div>
           <?php
           $n = new notificacoes();

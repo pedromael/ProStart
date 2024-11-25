@@ -2,8 +2,8 @@
 if ($abrir_nav == "primeiro") {
     ?>
     <footer class="footer">
-        <div>
-            <a href="login/"><img class="icone_medio" src="bibliotecas/bootstrap/icones/power.svg" alt=""></a>
+        <div class="container">
+            <a href="./"><h4>SyliaGO</h4></a>
         </div>
         <div class="nome">
             <a href="perfil"><?=$user['nome']?></a>
@@ -13,8 +13,8 @@ if ($abrir_nav == "primeiro") {
 }elseif($abrir_nav == "segundo"){
     ?>
     <footer class="footer">
-        <div>
-            <a href="../login/"><img class="icone_medio" src="../bibliotecas/bootstrap/icones/power.svg" alt=""></a>
+        <div class="container">
+            <a href="../"><h4>SyliaGO</h4></a>
         </div>
         <div class="nome">
             <a href="../perfil"><?=$user['nome']?></a>

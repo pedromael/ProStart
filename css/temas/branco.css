@@ -1,7 +1,7 @@
 :root{
     --cor_pri: white;
     --cor_sec: #2e356c;
-    --cor_terc: white;
+    --cor_terc: #eff0f3;
     --cor_quar: rgb(43, 226, 86);
     --cor_quinta: rgb(43, 226, 86);
     --char_pri: rgb(0, 0, 0);
@@ -9,6 +9,8 @@
     --bc_pbl: white;
     --bc_code: rgba(137, 43, 226, 0.1);
     --pbl_reac: rgba(0, 0, 0, 0.095);
+
+    --border: 10px;
 }
 
 

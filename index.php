@@ -88,7 +88,7 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat actualizar"></div>
+                        <div class="info_qtd_chat actualizar"></div>
                         <?php
                     }
                     ?>          
@@ -104,7 +104,7 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                     <?php
                 }else {
                     ?>
-                    <div style="" class="info_qtd_notific actualizar"></div>
+                    <div class="info_qtd_notific actualizar"></div>
                     <?php
                 }
                 ?>   
@@ -223,22 +223,47 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                     </div>
                 </div>
             </div>
-            <div>
-                <!--<div id="pbl_abrir" onmouseover="personalizar('#pbl_abrir')" onclick="publicar('fazer publicacao')">
-                    <button>fazer publicacao</button>
-                </div>-->
-                <div id="pbl_insert" class="conteiner_pbl">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <input class="file remover" id="input_file_pbl" type="file" name="doc[]" class="form-control" accept="image/*" multiple>
-                        <div class="formulario_normal_de_envio max">
-                            <textarea name="texto" id="" placeholder="deixe aqui a tua dica de hoje"></textarea>
-                            <label for="input_file_pbl"><div class="carregar"  style="background-image: url(bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div></label>
-                            <button name="btn_pbl" style="background-image: url(bibliotecas/bootstrap/icones/send.svg);" class="form-control"></button>
-                        </div>
-                    </form>
-                    <?php require "sent.php"; ?>
-                </div>
+            <style>
+                .fazer_poste{
+                    padding: 5px 10px 2px 10px !important;
+                    margin: 15px auto;
+                    margin-bottom: 6px;
+                    width: 85%;
+                }
+            </style>
+            <div class="container bg-white p-4 rounded shadow-sm fazer_poste">
+                <!-- Formulário de Postagem -->
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="mb-3 d-flex align-items-start">
+                        <!-- Avatar do Usuário -->
+                        <img src="media/img/<?=pegar_foto_perfil("perfil", $_SESSION['id_user'])?>" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                        
+                        <!-- Campo de Texto -->
+                        <textarea name="texto" 
+                                class="form-control border-0 shadow-none" 
+                                rows="3" 
+                                placeholder="No que você está pensando?"
+                                style="resize: none;"></textarea>
+                    </div>
+                    
+                    <!-- Upload de Arquivos e Botão de Enviar -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Botão de Upload -->
+                        <label for="input_file_pbl" class="btn btn-outline-secondary d-flex align-items-center">
+                            <img src="bibliotecas/bootstrap/icones/file-earmark-image.svg" alt="Upload" class="me-2" style="width: 20px;"> 
+                            Adicionar Fotos
+                        </label>
+                        <input type="file" id="input_file_pbl" name="doc[]" accept="image/*" multiple hidden>
+
+                        <!-- Botão de Enviar -->
+                        <button name="btn_pbl" class="btn btn-primary d-flex align-items-center">
+                            <img src="bibliotecas/bootstrap/icones/send.svg" alt="Enviar" class="me-2" style="width: 20px;">
+                            Publicar
+                        </button>
+                    </div>
+                </form>
             </div>
+            <?php require "sent.php"?>
             <?php
             if (isset($_GET['pbl'])) {
                 if ($_GET['pbl']) {

@@ -72,7 +72,7 @@
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat actualizar"></div>
+                        <div class="info_qtd_chat actualizar"></div>
                         <?php
                     }
                     ?>             
@@ -88,7 +88,7 @@
                     <?php
                 }else {
                     ?>
-                    <div style="" class="info_qtd_notific actualizar"></div>
+                    <div class="info_qtd_notific actualizar"></div>
                     <?php
                 }
                 ?>   
@@ -103,31 +103,29 @@
     require "../include/nav.php";
     ?>
     <div class="corpos">
-    <div id="aps" class="container-fluid bg-light py-3 shadow-sm">
-    <div class="row align-items-center">
-        <!-- Aba Centralizada -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <a href="./index.php" 
-               class="btn btn-outline-primary px-4 fw-bold 
-               <?php if (!isset($_GET['abrir'])) echo 'active'; ?>">
-                Encontrar Novos
-            </a>
-        </div>
+        <div id="aps" class="container-fluid bg-light py-3 shadow-sm">
+            <div class="row align-items-center">
+                <!-- Aba Centralizada -->
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="./index.php" 
+                    class="btn btn-outline-primary px-4 fw-bold 
+                    <?php if (!isset($_GET['abrir'])) echo 'active'; ?>">
+                        Novos
+                    </a>
+                </div>
 
-        <!-- Aba à Direita -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <?php if ($c->verificar_qtd("pdd", $id_user) > 0) { ?>
-                <a href="index.php?abrir=pdd" 
-                   class="btn btn-outline-primary px-4 fw-bold 
-                   <?php if (isset($_GET['abrir']) && $_GET['abrir'] === 'pdd') echo 'active'; ?>">
-                    Pedidos de Contatos (<span><?=$c->verificar_qtd("pdd", $id_user)?></span>)
-                </a>
-            <?php } ?>
-        </div>
-    </div>
-</div>
-
-        
+                <!-- Aba à Direita -->
+                <div class="col-md-6 d-flex justify-content-center">
+                    <?php if ($c->verificar_qtd("pdd", $id_user) > 0) { ?>
+                        <a href="index.php?abrir=pdd" 
+                        class="btn btn-outline-primary px-4 fw-bold 
+                        <?php if (isset($_GET['abrir']) && $_GET['abrir'] === 'pdd') echo 'active'; ?>">
+                            Pedidos(<span><?=$c->verificar_qtd("pdd", $id_user)?></span>)
+                        </a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>  
         <div id="corpo_contactos">
             <?php
             if($novos == "pdd"){
@@ -171,7 +169,7 @@
 
                             $imagen = pegar_foto_perfil("perfil",$id_dest);
                             ?>
-                            <div class="d-flex align-items-center p-3 border-bottom">
+                            <div class="d-flex align-items-center p-3 border-bottom shadow-sm">
                                 <!-- Imagem do usuário -->
                                 <div class="flex-shrink-0">
                                     <div class="rounded-circle" 
@@ -263,7 +261,7 @@
                     $imagen = pegar_foto_perfil("perfil",$id);
                     $nome = $pessoas_sugerida['nome'];
                     ?>
-                        <div class="d-flex align-items-center p-3 border-bottom">
+                        <div class="d-flex align-items-center p-3 border-bottom shadow-sm">
                             <!-- Imagem do usuário -->
                             <div class="flex-shrink-0">
                                 <div class="rounded-circle" 

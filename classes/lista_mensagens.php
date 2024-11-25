@@ -46,12 +46,12 @@ class lista_mensagens extends conexao
             $outro_indereco = "./";
         }
         ?>
-        <a href="chat.php?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
+        <a href="<?=$outro_indereco?>?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
             <div class="d-flex align-items-center p-2 border-bottom">
                 <!-- Imagem do usuário -->
                 <div class="flex-shrink-0">
                     <img src="<?=$this->indereco?>media/img/<?=$imagen?>" 
-                        alt="Foto do usuário" 
+                        alt="Foto do usuári endifo" 
                         class="rounded-circle" 
                         style="width: 50px; height: 50px; object-fit: cover;">
                 </div>

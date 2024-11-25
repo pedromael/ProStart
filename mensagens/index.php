@@ -1,23 +1,23 @@
 <?php
-require "../algoritimos/seguranca.php";
-require "../algoritimos/atalho.php";
-$c = new process;
+ require "../algoritimos/atalho.php";
+ require "../algoritimos/seguranca.php";
+ $c = new process;
 
-if (!isset($_SESSION["id_user"])) {
-  #header("location: ../login/");
-  ?>
-      <script>
-          windows.location.href = "../login/"
-      </script>
-  <?php
-}
-$id_user = $_SESSION['id_user'];
-
-if (!isset($novos)) {
-  $novos = false;
-}
-$link = conn();
-$imagen = pegar_foto_perfil("perfil",$id_user);
+ if (!isset($_SESSION["id_user"])) {
+    #header("location: ../login/");
+    ?>
+        <script>
+            document.location.href = "../login/"
+        </script>
+    <?php
+ }
+ if (isset($_GET['user'])) {
+    $id_dest = descriptografar($_GET['user']);
+    $imagen = pegar_foto_perfil("perfil",$id_dest);
+ } else {
+    $id_dest = NULL;
+ }
+ $id_user = $_SESSION['id_user'];
 ?>
 <html lang="pt">
 <head>
@@ -29,14 +29,14 @@ $imagen = pegar_foto_perfil("perfil",$id_user);
     <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">    
     <link rel="stylesheet" href="../css/stilo.css">
     <link rel="stylesheet" href="../css/coder.css">
-    <title>Contactos</title>
+    <title><?=$user['nome']?></title>
 </head>
 <body>
-  <script>var indereco = "../"</script>
+    <script>var indereco = "../";</script>
     <script src="../bibliotecas/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
     <nav id="metade_da_nav" onclick="abri_fecha('#segunda_nav')">
-        <img src="../bibliotecas/bootstrap/icones/border-width.svg">
+      <img src="../bibliotecas/bootstrap/icones/border-width.svg">
     </nav>
     <nav class="px-3 py-2">
       <div class="container">
@@ -60,7 +60,7 @@ $imagen = pegar_foto_perfil("perfil",$id_user);
             </li>
             <li>
                 <a href="./" class="nav-link text-white">
-                    <img src="../bibliotecas/bootstrap/icones/chat-left-dots.svg"/>   
+                    <img src="../bibliotecas/bootstrap/icones/chat-left-dots.svg"/>  
                     <?php
                     if($c->verificar_qtd("chat",$id_user) > 0){
                         ?>
@@ -71,7 +71,7 @@ $imagen = pegar_foto_perfil("perfil",$id_user);
                         <div style="" class="info_qtd_chat actualizar"></div>
                         <?php
                     }
-                    ?>             
+                    ?>              
                 </a>
             </li>
             <li>
@@ -98,50 +98,46 @@ $imagen = pegar_foto_perfil("perfil",$id_user);
     $abrir_nav = "segundo";
     require "../include/nav.php";
     ?>
-    <div class="corpos">
-      <div id="corpo" class="crp">
-        <div class="container overflow-y-auto">
-          <?php
-          $listagem = new lista_mensagens("../");
-          $numero_de_sms_encontradas = $listagem->getListaAmigos();
-          if ($numero_de_sms_encontradas < 1) {
-            ?>
-                <div class="texto_interativo">
-                    aque apareceram suas <a href="" class="destaque"><span>mensagens</span></a>,
-                    e seus <a href="" class="destaque"><span>contactos</span></a>
-                </div>
-                <div class="texto_interativo">
-                    adiciona <a href="../contactos/" class="destaque"><span>contactos</span></a> com quem tenhas interesse,
-                    para estares podendo trocar ideias... <a href="" class="destaque"><span>saber mais</span></a>
-                </div>
-              <div class="texto_interativo">
-                  encontra usuarios com mesmos ideias que os seus nas 
-                  <a href="../comunidade/" class="destaque"><span>comunidades</span></a>, e mantem contacto
-                  os adicionando a sua lista de <a href="../contactos/" class="destaque"><span>contacto</span></a>
-              </div>
-          <?php
-          }elseif($numero_de_sms_encontradas < 8){
-            ?>
-              <div class="texto_interativo">
-                  adiciona <a href="../contactos/" class="destaque"><span>contactos</span></a> com quem tenhas interesse,
-                  para estares podendo trocar ideias... <a href="" class="destaque"><span>saber mais</span></a>
-              </div>
-          <?php
-          }
+<div class="corpos">
+    <div class="corpo3 crp"></div>
+    <div id="corpo" class="crp">
+      <div class="corpo_diminuido overflow-y-auto">
+        
+      <div class="msg">
+        <?php
+        if($id_dest != NULL){
+          $msg = new mensagens;
+          $msg->receptor = $id_dest;
+          $msg->selecionar();
+        }else {
           ?>
-        </div>
-        <div class="prev_logados_chat">
-          <div class="container">
-            <?php
-            $listagem_logados = new verificar_logados("../");
-            $listagem_logados->logados();
-            ?>
+          <div class="container d-flex justify-content-center align-items-center h-100">
+            <h4>selecine uma mensagen</h>
           </div>
-        </div>
+          <?php
+        }
+        ?>
       </div>
-    </div>
-    
-    <?php require "../include/footer.php"; ?>
-    <script src="../js/fim_script.js"></script>
+  </div> 
+  <footer class="footer_chat">
+        <div class="formulario_normal_de_envio">
+            <textarea name="texto_cmt" id="" placeholder="a tua opiniao e importante"></textarea>
+            <div class="carregar"  style="background-image: url(../bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
+            <button name="btn_cmt" style="background-image: url(../bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="enviar_mensagem('<?=criptografar($id_dest)?>')"></button>
+        </div>
+      <?php
+      require "../sent.php";
+      ?>
+  </footer>
+  </div> 
+  <div class="corpo2 crp"></div>
+</div>
+
+<?php require "../include/footer.php"; ?>
+<script>
+  const corpo_chat = document.querySelector(".corpo_diminuido");
+  corpo_chat.scrollTop = corpo_chat.scrollHeight
+</script>
+<script src="../js/fim_script.js"></script>
 </body>
 </html>

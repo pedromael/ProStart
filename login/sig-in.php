@@ -63,7 +63,6 @@ $c = new sig_in;
                                 <p class="text-center">confirmar Senha</p>
                                 <input class="form-control" type="password" name="cs" id="senha_conf" required>
                             </div>
-                            <p style=" margin: 0px;">P-start: 1.0.0</p>
                         </div>
                         <div class="size80">
                             <button class="form-control button">cadastrar</button>

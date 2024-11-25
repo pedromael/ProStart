@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="../css/temas/<?=pegar_tema()?>.css">
     <link rel="stylesheet" href="../css/stilo.css">
     <link rel="stylesheet" href="../css/comunidade.css">
-    <title>Contactos</title>
+    <title>Comunidades</title>
 </head>
 <body>
     <script src="../js/script.js"></script>
@@ -146,7 +146,12 @@
             </a>
         </div>
         <div class="corpo_metade1 rolagem_vertical">
-        <h1 class="titulo1"><a href="./">minhas comunidades</a></h1>
+            <div class="container d-flex justify-content-center w-100">
+                <button class="btn btn-link text-decoration-none">
+                    Minhas Comunidades
+                </button>
+            </div>
+
             <?php
             if ($novos == "nova") {?>
                 <div class="card p-4 shadow-lg">
@@ -205,7 +210,11 @@
             ?> 
         </div>
         <div class="corpo_metade2 rolagem_vertical">
-        <h1 class="titulo1">comunidades sugeridas</h1>
+            <div class="container d-flex justify-content-center w-100">
+                <button class="btn btn-link text-decoration-none">
+                    Comunidades sugeridas
+                </button>
+            </div>
         <?php
         if($novos == "pdd" || true){
                 ?>

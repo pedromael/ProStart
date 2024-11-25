@@ -12,17 +12,25 @@
     font-weight: bold;
     background-image: linear-gradient(90deg,rgba(137, 43, 226, 0.3),white);
 }
-.texto_interativo{
-    width: 80%;
-    margin: 100px auto;
-    color: var(--char_pri);
+.texto_interativo {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    color: var(--char_pri, #333);
     text-align: justify;
-    text-indent: 40px;
-    padding: 5;
-    text-shadow: 2px 2px 2px var(--cor_pri);
-    box-shadow: 0px 0px 5px 5px #03093a40;
-    border-radius: 20px;
+    text-indent: 2rem;
+    padding: 15px 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
+    border-radius: 12px;
+    background-color: var(--cor_terc);
+    line-height: 1.6;
+    transition: box-shadow 0.3s ease-in-out;
 }
+
+.texto_interativo:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
 .ver_code{
     height: max-content;
 }
@@ -176,7 +184,7 @@ a{
     text-decoration: none;
 }
 body{
-    background-color: var(--cor_pri);
+    background-color: var(--cor_terc);
     color: var(--char_pri);
     font-size: 13pt;
 }
@@ -196,7 +204,7 @@ body nav{
     padding: 1px;
     border: 3px solid transparent;
     border-left: 8px solid transparent;
-    border-bottom: 4px solid var(--cor_sec);
+    border-bottom: 4px solid transparent;
     position: fixed;
     width: calc(100% - 34px);
     top: 0px;
@@ -216,7 +224,7 @@ body nav{
     top: 0px;
     background: var(--cor_pri);
     border: 8px solid var(--cor_pri);
-    border-left: 8px solid var(--cor_sec);
+    border-left: 8px solid transparent;
     border-right: none;
     z-index: 3;
 }
@@ -241,8 +249,7 @@ nav img{
     height: 27px;
 }
 nav #coder button{
-    color: var(--cor_pri);
-    background-color: var(--cor_sec);
+    color: var(--cor_sec);
     border: none;
     font-size: 13pt;
     font-family: 'arial';
@@ -322,9 +329,11 @@ nav .pesquisar{
     max-width: 350px;
     min-width: 250px;
     min-height: calc(200px);
+    max-height: calc(100% - 90px);
     background-color: var(--cor_pri);
     border: 2px solid var(--cor_sec);
-    border-top:9px solid transparent;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
     border-left-width: 9px;
     animation:  abrir 0.7s linear;
     margin-left: 0px;
@@ -346,34 +355,6 @@ nav .pesquisar{
 #segunda_nav .container{
     padding: 0px;
 }
-#segunda_nav legend{
-    width: 100%;
-    background: var(--cor_sec);
-    text-align: center;
-    font-size: 15pt;
-    font-family: arial;
-    color: var(--cor_pri);
-}
-#segunda_nav table tr #img_sec_nav img{
-    width: 40px;
-    height: 40px;
-    margin: 1px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center center;
-
-}
-#segunda_nav table tr #texto a{
-    color: var(--cor_pri);
-}
-#segunda_nav ul{
-    margin-left: 0;
-}
-#segunda_nav ul li{
-    display: block;
-    color: var(--cor_sec);
-    margin-bottom: 8px;
-}
 #nav_simples{
     background-color: var(--cor_pri);
     padding: 1px;
@@ -385,7 +366,6 @@ nav .pesquisar{
     height: 30px;
 }
 .footer{
-    border-top: 5px solid var(--cor_sec);
     position: fixed;
     width: 100%;
     height: 35px;
@@ -472,7 +452,7 @@ a{
     background-image: linear-gradient(90deg,rgba(137, 43, 226, 0.5),white);
 }
 #corpo{
-    background-color: var(--cor_pri);
+    background-color: transparent;
     border: none;
     position: relative;
     width: 100%;
@@ -496,19 +476,18 @@ a{
 }
 .corpo2{
     display: none;
-    border-color: var(--cor-sec);
-    border-left: 1px solid;
-    border-right: 1px solid;
+    background-color: var(--cor_pri);
+    border-radius: 10px;
 }
 .corpo3{
     display: none;
+    background-color: var(--cor_pri);
     box-shadow: 0 0 5px transparent;
-    border: 1px solid var(--cor_sec);
-    border-width: 0 1px;
-    width: calc(20% - 8px);
-    height: calc(100% - 8px);
+    width: calc(20% - 10px);
+    height: calc(100% - 10px);
     float: left;
-    margin: 2px;
+    margin: 5px;
+    border-radius: var(--border);
 }
 @media (min-width: 750px){
     .corpos .crp{
@@ -527,10 +506,9 @@ a{
     }*/
     .corpo2{
         position: absolute;
-        background-color: var(--cor-terc);
         width: calc(40% - 10px);
         height: calc(100% - 10px);
-        border-radius: 10px;
+        border-radius: var(--border);
         float: right;
         margin: 4px;
         display: hidden;
@@ -569,8 +547,8 @@ a{
 }
 #prev{
     position: relative;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+    background-color: var(--cor_pri);
+    border-radius: var(--border);
     width: calc(100% - 10px);
     margin: auto;
     margin-top: 5px;
@@ -613,33 +591,13 @@ a{
     width: fit-content;
     display: flex;
 }
-.trans{
-    position: absolute;
-    margin-top: -5px;
-    height: 100%;
-    width: 20px;
-    z-index: 2;
-    border-radius: 7px;
-    top: 5px;
-}
-.trans_esq{
-    left: 0;
-    background-image: linear-gradient(90deg, var(--cor_pri), transparent);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.trans_dir{
-    left: calc(100% - 20px);
-    background-image: linear-gradient(90deg, transparent, var(--cor_pri));
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
 
 .item{
     position: relative; 
-    width: 115px;
-    height: 175px;
-    border: 1px solid var(--cor_sec);
+    width: 190px;
+    height: 135px;
+    border: 2px solid white;
+    text-shadow: 1px 1px 4px black;
     border-radius: 15px;
     margin: 3px;
     flex-shrink: 0;
@@ -659,15 +617,16 @@ a{
 }
 .numero_de_storie .content div{
     display: inline-block;
-    width: 4px;
-    height: 9px;
+    width: 5px;
+    height: 10px;
     border-radius: 25%;
 }
 .numero_de_storie .visto{
     background-color: #ddd;
 }
 .numero_de_storie .n_visto{
-    background-color: var(--cor_sec);
+    background-color: var(--cor_pri);
+    box-shadow: 1px 1px 4px black;
 }
 .item .usuario{
     width: max-content;
@@ -675,11 +634,11 @@ a{
 }
 .item .usuario .nome{
     position: absolute;
-    color: var(--cor_sec);
+    color: var(--char_sec);
     bottom: 4px;
     left: 5px;
     font-weight: bold;
-    font-size: 9pt;
+    font-size: 11pt;
 }
 .item:hover{
     border-color: transparent;
@@ -689,8 +648,8 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    height: 160px;
+    width: 165px;
+    height: 120px;
     margin-top: 10px;
 }
 .carregar_storie p{
@@ -911,6 +870,8 @@ a{
     font-weight: bold;
     margin: 10px auto;
     background-color: var(--bc_pbl);
+    padding: 5px;
+    border-radius: var(--border);
 }
 #pbl .pbl_partilhada{
     width: 95%;
@@ -1457,12 +1418,12 @@ a{
 }
 /* mensagens */
 .prev_logados_chat{
-    top: calc(100% - 75px - 15px);
+    bottom: 0;
     position: absolute;
     width: 100%;
     height: 69px;
     margin: auto;
-    border-top: 1px solid var(--cor_sec);
+    border-top: 4px solid var(--cor_terc);
 }
 .prev_logados_chat .user{
     width: 60px;
@@ -1665,12 +1626,11 @@ a{
     background-repeat: none;
 }
 .login{
-    border-radius: 10px;
+    border-radius: var(--border);
     padding: 7px;
     margin-top: 20px;
     animation: lg 1s linear;
-    box-shadow: 0 0 4px var(--cor_sec);
-    background: #f0fbfd;
+    background: var(--cor_pri);
     max-width: 350px;
 }
 @media(min-width: 850px){
@@ -1754,25 +1714,27 @@ a{
     font-family: arial;
     color: var(--cor_pri);
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 .login .img img,
 .login .img_icone img{
     width: 100%;
 }
 .login fieldset{
-    background-color: var(--cor_pri);
+    background-color: var(--cor_terc);
 }
 .login fieldset .bg{
     background: var(--cor_sec);
-    border-radius: 6px;
+    border-radius: var(--border);
     padding: 10px;
-    padding-bottom: 0;
     margin: 0;
 }
 .login input,
 .login select{
     border: 2px solid;
     border-color: var(--cor_pri);
+    border-radius: var(--border);
     background-color: transparent;
     color: white;
 }
