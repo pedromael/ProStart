@@ -68,7 +68,7 @@
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat actualizar"></div>
+                        <div class="info_qtd_chat actualizar"></div>
                         <?php
                     }
                     ?>              
@@ -84,7 +84,7 @@
                     <?php
                 }else {
                     ?>
-                    <div style="" class="info_qtd_notific actualizar"></div>
+                    <div class="info_qtd_notific actualizar"></div>
                     <?php
                 }
                 ?>   

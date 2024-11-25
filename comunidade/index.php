@@ -111,7 +111,7 @@ if (isset($_FILES['img']) && $_SESSION['id_user'] == $sql['id_user']) {
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat actualizar"></div>
+                        <div class="info_qtd_chat actualizar"></div>
                         <?php
                     }
                     ?>            
@@ -127,7 +127,7 @@ if (isset($_FILES['img']) && $_SESSION['id_user'] == $sql['id_user']) {
                     <?php
                 }else {
                     ?>
-                    <div style="" class="info_qtd_notific actualizar"></div>
+                    <div class="info_qtd_notific actualizar"></div>
                     <?php
                 }
                 ?>  

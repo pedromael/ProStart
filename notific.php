@@ -63,7 +63,7 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                         <?php
                     }else {
                         ?>
-                        <div style="" class="info_qtd_chat"></div>
+                        <div class="info_qtd_chat"></div>
                         <?php
                     }
                     ?>          
