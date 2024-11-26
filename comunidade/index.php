@@ -274,6 +274,6 @@ if (isset($_FILES['img']) && $_SESSION['id_user'] == $sql['id_user']) {
       <div class="corpo2 crp"></div>
     </div>
     <?php include "../include/footer.php"; ?>
-    <script src="../js/fim_script.js"></script>
+    <script src="/src/js/fim_script.js"></script>
 </body>
 </html>
