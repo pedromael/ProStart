@@ -35,7 +35,7 @@ class mensagens extends process
                         <div class="d-inline-block img_msg">
                             <?php
                             if ($anterior) {
-                                ?><img id="img_msg" src="../media/img/<?=pegar_foto_perfil("perfil",$dados['id_user'])?>" alt=""><?php
+                                ?><img id="img_msg" src="<?=pegar_foto_perfil("perfil",$dados['id_user'])?>" alt=""><?php
                             }
                             ?>
                         </div>

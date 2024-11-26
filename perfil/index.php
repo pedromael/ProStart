@@ -45,65 +45,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/glou_icon.png" type="image/x-icon">
-    <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">  
-    <link rel="stylesheet" href="../css/temas/<?=pegar_tema()?>.css">
-    <link rel="stylesheet" href="../css/stilo.css">
-    <link rel="stylesheet" href="../css/perfil.css">
-    <link rel="stylesheet" href="../css/coder.css">
-    <link href="../bibliotecas/codemirror-5.7/lib/codemirror.css" rel="stylesheet">
-    <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/base16-dark.css">
-    <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/dracula.css">
-    <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/eclipse.css">
-    <script src="../bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/addon/hint/javascript-hint.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/mode/javascript/javascript.js"></script>
-    <script src="../js/script.js"></script>
+    <link rel="icon" href="/src/img/glou_icon.png" type="image/x-icon">
+    <link href="/bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="/src/css/temas/<?=pegar_tema()?>.css">
+    <link rel="stylesheet" href="/src/css/stilo.css">
+    <link rel="stylesheet" href="/src/css/perfil.css">
+    <link rel="stylesheet" href="/src/css/coder.css">
+    <link href="/bibliotecas/codemirror-5.7/lib/codemirror.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/theme/base16-dark.css">
+    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/theme/dracula.css">
+    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/theme/eclipse.css">
+    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/addon/hint/javascript-hint.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/mode/javascript/javascript.js"></script>
+    <script src="/src/js/script.js"></script>
     <title><?=$sql['nome']?></title>
 </head>
 <body>
     <script>var indereco="../";</script>
-    <nav id="metade_da_nav" onclick="abri_fecha('#segunda_nav')">
-        <img src="../bibliotecas/bootstrap/icones/border-width.svg">
-    </nav>
-    <nav class="px-3 py-2">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-          <ul class="nav col-12 justify-content-center my-md-0 text-small">
-            <li>
-              <a href="../" class="nav-link text-secondary">
-                <img src="../bibliotecas/bootstrap/icones/house.svg">
-              </a>
-            </li>
-            <li>
-              <a href="../comunidade/" class="nav-link text-white">
-                <img src="../bibliotecas/bootstrap/icones/people.svg">
-              </a>
-            </li>
-            <li>
-              <a href="../coder/" class="nav-link text-white">
-                <a href="../coder/" id="coder"><button>CODER</button></a>
-              </a>
-            </li>
-            <li>
-                <a href="../mensagens/" class="nav-link text-white">
-                    <img src="../bibliotecas/bootstrap/icones/chat-left-dots.svg"/>              
-                </a>
-            </li>
-            <li>
-              <a href="../notific.php" class="nav-link text-white">
-                <img src="../bibliotecas/bootstrap/icones/bell.svg"/>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <?php
-    $abrir_nav = "segundo";
     require "../include/nav.php";
     if ($id_user == $_SESSION['id_user']) {
         ?>
@@ -147,7 +109,7 @@
                     <div id="dados">
                         <style>
                             .perfil_img{
-                                background-image: url(<?="../media/img/".$imagen_perfil?>);
+                                background-image: url(<?=$imagen_perfil?>);
                             }
                         </style>
                         <?php
@@ -249,7 +211,7 @@
                                         <?php
                                     }
                                 ?>
-                                <a href="../mensagens/chat.php?user=<?=criptografar($id_user)?>"><button class="form-control msg">mensagem</button></a>
+                                <a href="/mensagens/?user=<?=criptografar($id_user)?>"><button class="form-control msg">mensagem</button></a>
                             </div>
                             <?php
                         }
@@ -297,7 +259,7 @@
     <?php
         include "../include/footer.php";
     ?>
-    <script src="../js/fim_script.js"></script>
-    <script src="../js/coder.js"></script>
+    <script src="/src/js/fim_script.js"></script>
+    <script src="/src/js/coder.js"></script>
 </body>
 </html>

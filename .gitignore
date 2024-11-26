@@ -1,5 +1,3 @@
-# Ignorar tudo dentro do diretório img
-media/img/*
+# Ignorar tudo dentro do diretório
+src/userFile/*
 
-# Mas não ignorar essas duas imagens específicas
-!img/sem_img_no_perfil.jpeg

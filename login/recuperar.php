@@ -18,10 +18,10 @@ $PHPMailer = new PHPMailer(true);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/glou_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/temas/branco.css">
+    <link rel="icon" href="../src/img/glou_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../src/css/temas/branco.css">
     <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/stilo.css">
+    <link rel="stylesheet" href="../src/css/stilo.css">
     <title>Login</title>
 </head>
 <body id="inicio">
@@ -33,7 +33,7 @@ $PHPMailer = new PHPMailer(true);
             <div class="size80 center login">
                 <p></p>
                 <div class="img">
-                    <img src="../img/glou_icon.png" alt="">
+                    <img src="../src/img/glou_icon.png" alt="">
                 </div>
                 <form name="Game" method="post">
                     <fieldset class="login">

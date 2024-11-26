@@ -19,8 +19,6 @@ class postes extends process
     public $oque;
     public $para;
     private $comunidade;
-    public $destino;
-
     function __construct()
     {
         parent::__construct();
@@ -47,24 +45,15 @@ class postes extends process
         $do = mysqli_query($this->link, "SELECT * FROM doc WHERE id=$id_pbl AND (tipo='pbl' OR tipo='video')");
         $inderecos = array();
         while ($doc = mysqli_fetch_assoc($do)) {
-            array_push($inderecos,$doc['indereco']);
+            array_push($inderecos,"/src/userFile/".$this->usuario($row['id_user'])['code_nome']."/img/".$doc['indereco']);
         }  
-        if ($row['id_partilha'] >= 0) {
-            $nao_existe_partilha = true;
-        }else {
-            $nao_existe_partilha = false;
-        }
+
         $comunidade=[];
         if ($row['id_comunidade']) {
             $comunidade = $this->comunidade->comunidade($row['id_comunidade']);
         }
         $qtd_indereco = count($inderecos);
 
-        if (empty($this->destino)) {
-            if ($this->oque != "pbl") {$origem = "../";}else {$origem = "./";}
-        }else {
-            $origem = $this->destino;
-        }
         if (!$partilha) {?><div id="pbl" class=""><?php }else{?><div id="" class="pbl_partilhadaa"><?php }
         ?>
             <table>
@@ -75,8 +64,8 @@ class postes extends process
                     }
                     ?>  
                     <td id="img">
-                        <a href="perfil/index.php?user=<?=criptografar($id)?>">
-                            <div id="img" class="loader" style="background-image: url(<?=$origem?>media/img/<?=$imagen?>);"></div>
+                        <a href="/perfil/index.php?user=<?=criptografar($id)?>">
+                            <div id="img" class="loader" style="background-image: url(<?=$imagen?>);"></div>
                         </a>
                     </td>
                     <td id="nome" colspan="2">
@@ -84,7 +73,7 @@ class postes extends process
                         if ($row['id_comunidade'] > 0 && $this->oque == "pbl") {
                             ?>
                             <span>
-                                <a class="nome_comunidade" href="comunidade/?cmndd=<?=criptografar($row['id_comunidade'])?>"><?=$comunidade['nome']?></a><br>
+                                <a class="nome_comunidade" href="/comunidade/?cmndd=<?=criptografar($row['id_comunidade'])?>"><?=$comunidade['nome']?></a><br>
                             </span>
                             <?php
                         }
@@ -92,13 +81,13 @@ class postes extends process
                             if ($row['id_comunidade']) {
                                 ?>
                                 <span class="da_comunidade">
-                                    <a href="perfil/index.php?user=<?=criptografar($id)?>"><?=$sqll['nome']?></a>
+                                    <a href="/perfil/?user=<?=criptografar($id)?>"><?=$sqll['nome']?></a>
                                 </span>
                                 <?php
                             }else {
                                 ?>
                                 <span>
-                                    <a href="perfil/?user=<?=criptografar($id)?>"><?=$sqll['nome']?></a>
+                                    <a href="/perfil/?user=<?=criptografar($id)?>"><?=$sqll['nome']?></a>
                                 </span>
                                 <?php
                                 $id = $sqll['id_user'];
@@ -110,7 +99,7 @@ class postes extends process
                                 if ($v_a['total'] <= 0 && $id != $this->user['id_user']) {
                                     ?>
                                     <div class="img_add_user">
-                                        <img src="bibliotecas/bootstrap/icones/person-fill-add.svg" alt="">
+                                        <img src="/bibliotecas/bootstrap/icones/person-fill-add.svg" alt="">
                                     </div>
                                     <?php
                                 }
@@ -118,7 +107,7 @@ class postes extends process
                             
                         }else {
                             ?>
-                                <a href="<?=$origem?>perfil/?user=<?=criptografar($id)?>"><?=$sqll['nome']?></a>
+                                <a href="<?=criptografar($id)?>"><?=$sqll['nome']?></a>
                             <?php        
                         }
                         ?>
@@ -156,11 +145,11 @@ class postes extends process
                                 if ($a < 3 && count($inderecos) > 4) {$class = "primeiro";}
                                 if ($qtd_indereco <= 5) {
                                     ?>
-                                        <a href="<?=$origem?>pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$origem?>media/img/<?=$indereco?>" alt="" class="qtd<?=$qtd_indereco?> <?=$class?>"></a>
+                                        <a href="/pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$indereco?>" alt="" class="qtd<?=$qtd_indereco?> <?=$class?>"></a>
                                     <?php    
                                 }else {
                                     ?>
-                                        <a href="<?=$origem?>pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$origem?>media/img/<?=$indereco?>" alt="" class="qtd_mais <?=$class?>"></a>
+                                        <a href="/pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$indereco?>" alt="" class="qtd_mais <?=$class?>"></a>
                                     <?php
                                 }
                                 if ($a == 4) {break;}
@@ -181,7 +170,7 @@ class postes extends process
                                 foreach ($inderecos as $indereco) {
                                     ?>
                                     <figcaption class="v_unica">
-                                        <a href="<?=$origem?>pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$origem?>media/img/<?=$indereco?>" alt="" class="<?=$class?>"></a>
+                                        <a href="/pbl/?pbl=<?=criptografar($id_pbl)?>"><img src="<?=$indereco?>" alt="" class="<?=$class?>"></a>
                                     </figcaption>
                                     <?php    
                                     $a++;
@@ -219,20 +208,20 @@ class postes extends process
                                         <?php    
                                         if ($this->qtd_reacao($id_pbl,'pbl',$_SESSION['id_user']) > 0) {
                                             ?>
-                                            <img class="teste add" src="<?=$origem?>bibliotecas/bootstrap/icones/heart-fill.svg" alt=""><span><?=$this->qtd_reacao($id_pbl,'pbl')?></span>
+                                            <img class="teste add" src="/bibliotecas/bootstrap/icones/heart-fill.svg" alt=""><span><?=$this->qtd_reacao($id_pbl,'pbl')?></span>
                                             <?php
                                         }else {
                                             ?>
-                                            <img class="" src="<?=$origem?>bibliotecas/bootstrap/icones/heart.svg" alt=""> <span><?=$this->qtd_reacao($id_pbl,'pbl')?></span>
+                                            <img class="" src="/bibliotecas/bootstrap/icones/heart.svg" alt=""> <span><?=$this->qtd_reacao($id_pbl,'pbl')?></span>
                                             <?php
                                         }
                                         ?>
                                     </div>
                                 </div>
                                 <div class="reac_pbl col">
-                                    <a href="<?=$origem?>pbl/?pbl=<?=criptografar($id_pbl)?>&cmt=true">
+                                    <a href="/pbl/?pbl=<?=criptografar($id_pbl)?>&cmt=true">
                                         <div class="centralizador">
-                                            <img src="<?=$origem?>bibliotecas/bootstrap/icones/chat-dots.svg" alt=""> <span><?=qtd_de_cmt($id_pbl)?></span>
+                                            <img src="/bibliotecas/bootstrap/icones/chat-dots.svg" alt=""> <span><?=qtd_de_cmt($id_pbl)?></span>
                                         </div> 
                                     </a>   
                                 </div>
@@ -241,7 +230,7 @@ class postes extends process
                                     ?>
                                     <div class="reac_pbl col" id="">
                                         <div class="centralizador" onclick="abrir_partilhar('pbl',<?=$id_pbl?>)" >
-                                            <img src="<?=$origem?>bibliotecas/bootstrap/icones/reply.svg" alt="">
+                                            <img src="/bibliotecas/bootstrap/icones/reply.svg" alt="">
                                         </div>
                                     </div>
                                     <?php

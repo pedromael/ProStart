@@ -9,10 +9,10 @@ $c = new sig_in;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/glou_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/temas/branco.css">
+    <link rel="icon" href="../src/img/glou_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../src/css/temas/branco.css">
     <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/stilo.css">
+    <link rel="stylesheet" href="../src/css/stilo.css">
     <title>Sig-in</title>
 </head>
 <body id="inicio">
@@ -23,7 +23,7 @@ $c = new sig_in;
         <div class="login_conteiner">
             <div class="size80 center login">
                 <div class="img_icone">
-                    <img src="../img/glou_icon.png" alt="">
+                    <img src="../src/img/glou_icon.png" alt="">
                 </div>
                 <form name="Game" method="post">
                     <fieldset class="login">

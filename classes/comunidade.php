@@ -15,12 +15,6 @@ class comunidade extends conexao
         return $sql->fetch();
     }
     public function mostrar_comunidades($row,$caso){
-        if ($this->indereco == NULL) {
-            $this->indereco = "../";
-            $loc = "./";
-        }else {
-            $loc = "comunidade/";
-        }
         $id_comunidade = $row['id_comunidade'];
         $imagen = pegar_foto_perfil("cmdd",$id_comunidade);
         if ($caso == "minhas") {
@@ -30,7 +24,7 @@ class comunidade extends conexao
         <!-- Imagem da Comunidade -->
         <div class="col-auto">
             <div class="rounded-circle" 
-                 style="width: 60px; height: 60px; background-image: url('<?=$this->indereco?>media/img/<?=$imagen?>'); background-size: cover; background-position: center;">
+                 style="width: 60px; height: 60px; background-image: url('<?=$imagen?>'); background-size: cover; background-position: center;">
             </div>
         </div>
 
@@ -40,7 +34,7 @@ class comunidade extends conexao
                 <!-- Informações -->
                 <div>
                     <h5 class="card-title mb-1">
-                        <a href="<?=$loc?>?cmndd=<?=criptografar($id_comunidade)?>" class="text-decoration-none text-dark">
+                        <a href="/comunidade/?cmndd=<?=criptografar($id_comunidade)?>" class="text-decoration-none text-dark">
                             <?=$row['nome']?>
                         </a>
                     </h5>
@@ -51,7 +45,7 @@ class comunidade extends conexao
                 </div>
                 <!-- Botão -->
                 <div>
-                    <a href="<?=$loc?>?cmndd=<?=criptografar($id_comunidade)?>" class="btn btn-primary">
+                    <a href="/comunidade/?cmndd=<?=criptografar($id_comunidade)?>" class="btn btn-primary">
                         Visualizar
                     </a>
                 </div>
@@ -74,7 +68,7 @@ class comunidade extends conexao
                             <div>...</div>
                         </div>
                     </a>
-                    <a href="<?=$loc?>lista.php?abrir=pdd&cmndd=<?=criptografar($id_comunidade)?>">
+                    <a href="/comunidade/lista.php?abrir=pdd&cmndd=<?=criptografar($id_comunidade)?>">
                         <div class="c2 cont btn-pri">
                             <div>entrar</div>
                         </div>

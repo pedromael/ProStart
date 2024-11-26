@@ -35,7 +35,7 @@ if (isset($_POST['btn_pbl'])) {
             $a++;
         }
 
-        $dir = 'media/img/';
+        $dir = 'src/userFile/'.$user['code_nome'].'/img/';
         $doc = true;
     } else {
         $nome_img = NULL;
@@ -115,7 +115,7 @@ if (isset($_POST['btn_pbl_comunidade'])) {
             array_push($imagens,array("indereco"=>$nome_img,"name"=>$nome[$a],"tmp_name"=>$tmp[$a],"type"=>$type[$a],"size"=>$size[$a]));
             $a++;
         }
-        $dir = '../media/img/';
+        $dir = '../src/userFile/'.$user['code_nome'].'/img/';
         $doc = true;
     }else {
         $nome_img = NULL;

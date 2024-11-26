@@ -235,19 +235,17 @@ function pegar_foto_perfil($tipo,$id)
         $img = mysqli_query(conn(), "SELECT * FROM doc WHERE id_user=$id AND tipo='$tipo' ORDER BY id_doc DESC");
         $img = mysqli_fetch_assoc($img);
         if (isset($img['indereco'])) {
-            $imagen = $img['indereco'];
+            return "/src/userFile".(new informacoes_usuario())->user['code_nome']."/img/".$img['indereco'];
+        }else if (empty($imagen)) {   
+            return "/src/img/sem_img_no_perfil.jpeg";
         }
-        if (empty($imagen)) {   
-        $imagen = "sem_img_no_perfil.jpeg";
-        }
-        return $imagen;
     }elseif($tipo == "cmdd") {
         $img = mysqli_query(conn(), "SELECT * FROM doc WHERE id=$id AND tipo='$tipo' ORDER BY id_doc DESC");
         $img = mysqli_fetch_assoc($img);
         if (isset($img['indereco'])) {
             $imagen = $img['indereco'];
         }else {   
-        $imagen = "sem_img_no_perfil.jpeg";
+            return "/src/img/sem_img_no_perfil.jpeg";
         }
         return $imagen;
     }

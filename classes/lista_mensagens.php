@@ -5,13 +5,11 @@ class lista_mensagens extends conexao
     private $conn;
     public $process;
     private $id_user;
-    private $indereco;
 
-    public function __construct($indereco = NULL)
+    public function __construct()
     {   
         parent::__construct();
         global $bdnome2;
-        $this->indereco = $indereco;
         $this->bdnome2 = $bdnome2; 
         $this->process = new process;
         $this->conn = conn();
@@ -37,20 +35,12 @@ class lista_mensagens extends conexao
             }
             $texto = $texto." ".$tres_pontos;
         }
-        if ($this->indereco == "../") {
-            $outro_indereco = "../mensagens/";
-        }if($this->indereco == "./"){
-            $outro_indereco = "./mensagens/";
-        }
-        if($this->indereco != "../" && $this->indereco != "./"){
-            $outro_indereco = "./";
-        }
         ?>
-        <a href="<?=$outro_indereco?>?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
+        <a href="/mensagens/?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
             <div class="d-flex align-items-center p-2 border-bottom">
                 <!-- Imagem do usuário -->
                 <div class="flex-shrink-0">
-                    <img src="<?=$this->indereco?>media/img/<?=$imagen?>" 
+                    <img src="<?=$imagen?>" 
                         alt="Foto do usuári endifo" 
                         class="rounded-circle" 
                         style="width: 50px; height: 50px; object-fit: cover;">

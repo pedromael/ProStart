@@ -42,7 +42,7 @@ class notificacoes extends process
                     $userName,
                     " comentou na tua publicação",
                     $commentText,
-                    "pbl/?pbl=$postId",
+                    "/pbl/?pbl=$postId",
                     "chat-left-dots",
                     $data,
                     $stilo_de_bordas
@@ -65,7 +65,7 @@ class notificacoes extends process
                     $userName,
                     " comentou no teu código",
                     $commentText,
-                    "coder/ver.php?coder=$codeId&modificar=0&comentar=1",
+                    "/coder/ver.php?coder=$codeId&modificar=0&comentar=1",
                     "chat-left-dots",
                     $data,
                     $stilo_de_bordas
@@ -86,13 +86,13 @@ class notificacoes extends process
                 $userName,
                 " reagiu à tua publicação",
                 $reactionText,
-                "pbl/?pbl=$postId",
+                "/pbl/?pbl=$postId",
                 "heart-fill",
                 $data,
                 $stilo_de_bordas
             );
         } elseif ($sql['tipo'] == "contacto_aceite") {
-            $profileLink = "perfil/?user=" . criptografar($id_dest);
+            $profileLink = "/perfil/?user=" . criptografar($id_dest);
             echo $this->renderNotification(
                 $imagen,
                 $userName,
@@ -110,7 +110,7 @@ class notificacoes extends process
     {
     return <<<HTML
     <div class="$style d-flex align-items-start p-3 mb-3 border rounded shadow-sm">
-        <div class="profile-pic rounded-circle" style="background-image: url('media/img/$image'); width: 50px; height: 50px; background-size: cover; background-position: center;"></div>
+        <div class="profile-pic rounded-circle" style="background-image: url('$image'); width: 50px; height: 50px; background-size: cover; background-position: center;"></div>
         <div class="ms-3 flex-grow-1">
             <a href="$link" class="text-decoration-none text-dark">
                 <div>
@@ -120,7 +120,7 @@ class notificacoes extends process
             </a>
         </div>
         <div class="ms-auto">
-            <img src="bibliotecas/bootstrap/icones/$icon.svg" alt="" class="icon-small">
+            <img src="/bibliotecas/bootstrap/icones/$icon.svg" alt="" class="icon-small">
         </div>
         <div class="text-muted small ms-3">$date</div>
     </div>

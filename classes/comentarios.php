@@ -7,16 +7,15 @@ class comentarios extends informacoes_usuario
 
     public function mostrar($dados){
         $user = $this->usuario($dados['id_user']);
-        $this->indereco = "../";
         ?>
         <div id="cmt" class="">
             <div id="img_cmt">
-                <a href=""><img src="<?=$this->indereco?>media/img/<?=pegar_foto_perfil("perfil",$dados['id_user'])?>" alt=""></a>
+                <a href=""><img src="<?=pegar_foto_perfil("perfil",$dados['id_user'])?>" alt=""></a>
             </div>
             <div class="conteudo">
                 <table>
                     <tr>
-                        <td id="nome" colspan="3"><a href="<?=$this->indereco?>perfil/?user=<?=criptografar($dados['id_user'])?>"><?=$user['nome']?></a></td>
+                        <td id="nome" colspan="3"><a href="/perfil/?user=<?=criptografar($dados['id_user'])?>"><?=$user['nome']?></a></td>
                     </tr>
                     <tr id="txt_cmt">
                         <td colspan="5"><p class="text"><?=$dados['texto']?></p></td>
