@@ -12,13 +12,7 @@ if (!isset($_SESSION['id_user'])) {
     </script>
     <?php    
 }
-if ($_SESSION['id_user'] == 4) {
-    ?>
-    <script type="text/javascript">
-        window.location.href="adm/?usuarios";
-    </script>
-    <?php 
-}
+
 $id_user = $_SESSION['id_user'];
 $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
 ?>

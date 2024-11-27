@@ -19,23 +19,6 @@ if (isset($_SESSION['id_user'])) {
     $user = new informacoes_usuario;
     $user = $user->user;
 }
-if(/*$_SESSION['adm']==true &&*/ false){
-    if (__DIR__ != "./projecto%20da%20defesa%20final/adm/") {
-        if (is_dir("../adm/")) {
-            ?>
-            <script>
-                window.location.href ="../adm/";
-            </script>
-            <?php
-        }elseif(is_dir("./adm/")) {
-            ?>
-            <script>
-                window.location.href ="./adm/";
-            </script>
-            <?php
-        }
-    }
-}
 
 $bdnome2 = (new conexao)->bdnome2;
 function conn()
