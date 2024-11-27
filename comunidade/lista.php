@@ -54,7 +54,7 @@
     ?>
     <div class="corpos">
         <div id="aps" class="">
-            <div class="block">
+            <div class="container p-5">
                 <a href="lista.php?abrir=nova" class="text-center btn_simples2">criar comunidade</a>
             </div>
             <div class="block">

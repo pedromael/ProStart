@@ -184,7 +184,7 @@ function carregar_img($doc,$tipo,$id) {
         }
         
         $nome_img = "IMG-" . $_SESSION['id_user'] . "-perfil-" . date("Y.m.d-H.i.s") . $ext;
-        $dir = '../media/img/';
+        $dir = '../src/userFile/'.(new informacoes_usuario())->user['code_nome'].'/img/';
         if (move_uploaded_file($_FILES['img']['tmp_name'], $dir . $nome_img)) {
             if ($c->carregar_documento($id, $tipo, $nome_img)) {
                 return true;
@@ -216,7 +216,7 @@ function carregar_img_storie($imgs) {
             }
             
             $nome_img = "IMG-" . $_SESSION['id_user'] . "-".rand(0,9000)."-" . date("Y.m.d-H.i.s") . $ext;
-            $dir = 'media/img/';
+            $dir = 'src/userFile/'.(new informacoes_usuario())->user['code_nome'].'/img/';
             if (move_uploaded_file($_FILES['img']['tmp_name'], $dir . $nome_img)) {
                 if (!$c->postar_stories($nome_img)) {
                     return false;
@@ -235,7 +235,7 @@ function pegar_foto_perfil($tipo,$id)
         $img = mysqli_query(conn(), "SELECT * FROM doc WHERE id_user=$id AND tipo='$tipo' ORDER BY id_doc DESC");
         $img = mysqli_fetch_assoc($img);
         if (isset($img['indereco'])) {
-            return "/src/userFile".(new informacoes_usuario())->user['code_nome']."/img/".$img['indereco'];
+            return "/src/userFile/".(new informacoes_usuario())->user['code_nome']."/img/".$img['indereco'];
         }else if (empty($imagen)) {   
             return "/src/img/sem_img_no_perfil.jpeg";
         }
@@ -243,11 +243,10 @@ function pegar_foto_perfil($tipo,$id)
         $img = mysqli_query(conn(), "SELECT * FROM doc WHERE id=$id AND tipo='$tipo' ORDER BY id_doc DESC");
         $img = mysqli_fetch_assoc($img);
         if (isset($img['indereco'])) {
-            $imagen = $img['indereco'];
+            return "/src/userFile/".(new informacoes_usuario)->usuario((new comunidade())->comunidade($id)['id_user'])['code_nome']."/img/".$img['indereco'];
         }else {   
             return "/src/img/sem_img_no_perfil.jpeg";
         }
-        return $imagen;
     }
     
 }

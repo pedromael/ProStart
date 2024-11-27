@@ -72,7 +72,7 @@
                 </a>
             </div>
             <div>
-                <a href="<?=$base_path?>perfil/?user=<?=criptografar($user['id_user'])?>" class="text-decoration-none fw-bold text-dark">
+                <a href="/perfil/?user=<?=criptografar($user['id_user'])?>" class="text-decoration-none fw-bold text-dark">
                     <?=$user['code_nome']?>
                 </a>
             </div>

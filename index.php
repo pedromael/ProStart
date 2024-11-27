@@ -132,8 +132,9 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                         $storie = new stories;
                         foreach ($storie->stories as $row) {
                             $dados = $storie->storie_info($row['id_user']);
+                            $imagen_user = '/src/userFile/'.(new informacoes_usuario())->usuario($row['id_user'])['code_nome'].'/img/'.$dados['bg_storie'];
                             ?> 
-                            <div class="item" onclick="abrir_storie(<?=$row['id_user']?>)" style="background-image : url(media/img/<?=$dados['bg_storie']?>);">
+                            <div class="item" onclick="abrir_storie(<?=$row['id_user']?>)" style="background-image : url(<?=$imagen_user?>);">
                                 <div class="usuario">
                                     <div class="nome">
                                         <?=$dados['nome']?>
@@ -167,30 +168,22 @@ $imagen = pegar_foto_perfil("perfil",$_SESSION['id_user']);
                 }
             </style>
             <div class="container bg-white p-4 rounded shadow-sm fazer_poste">
-                <!-- Formulário de Postagem -->
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="mb-3 d-flex align-items-start">
-                        <!-- Avatar do Usuário -->
                         <img src="<?=pegar_foto_perfil("perfil", $_SESSION['id_user'])?>" alt="Avatar" class="rounded-circle me-3" style="width: 50px; height: 50px;">
                         
-                        <!-- Campo de Texto -->
                         <textarea name="texto" 
                                 class="form-control border-0 shadow-none" 
                                 rows="3" 
                                 placeholder="No que você está pensando?"
                                 style="resize: none;"></textarea>
                     </div>
-                    
-                    <!-- Upload de Arquivos e Botão de Enviar -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <!-- Botão de Upload -->
                         <label for="input_file_pbl" class="btn btn-outline-secondary d-flex align-items-center">
                             <img src="bibliotecas/bootstrap/icones/file-earmark-image.svg" alt="Upload" class="me-2" style="width: 20px;"> 
                             Adicionar Fotos
                         </label>
                         <input type="file" id="input_file_pbl" name="doc[]" accept="image/*" multiple hidden>
-
-                        <!-- Botão de Enviar -->
                         <button name="btn_pbl" class="btn btn-primary d-flex align-items-center">
                             <img src="bibliotecas/bootstrap/icones/send.svg" alt="Enviar" class="me-2" style="width: 20px;">
                             Publicar

@@ -13,11 +13,12 @@ $dados = $storie->storie_info($data['id_user'], true);
             <?php 
             $isFirst = true;
             foreach ($dados['stories'] as $value) { 
+                $imagen_user = '/src/userFile/'.(new informacoes_usuario())->usuario($data['id_user'])['code_nome'].'/img/'.$value['indereco_img'];
             ?>
             <div class="carousel-item <?=$isFirst ? 'active' : ''?>">
                 <div class="position-relative">
                     <!-- Image -->
-                    <img src="media/img/<?=$value['indereco_img']?>" class="d-block w-100" alt="Story Image" style="max-height: 500px; object-fit: cover;">
+                    <img src="<?=$imagen_user?>" class="d-block w-100" alt="Story Image" style="max-height: 500px; object-fit: cover;">
 
                     <!-- Título e Nome do Proprietário sobrepondo a Imagem (à esquerda) -->
                     <div class="position-absolute top-0 start-0 text-white p-3">

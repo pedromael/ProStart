@@ -30,16 +30,6 @@ $user = mysqli_fetch_assoc($user);
     <link rel="stylesheet" href="/src/css/temas/<?=pegar_tema()?>.css">
     <link href="/bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bibliotecas/codemirror-5.7/lib/codemirror.css" rel="stylesheet">
-    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/addon/hint/show-hint.css">
-    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/lib/codemirror.css">
-    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/theme/3024-day.css">
-    <link rel="stylesheet" href="/bibliotecas/codemirror-5.7/theme/dracula.css">
-    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="/bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
-    <script src="/bibliotecas/codemirror-5.7/addon/hint/javascript-hint.js"></script>
-    <script src="/bibliotecas/codemirror-5.7/mode/javascript/javascript.js"></script>
-    <script src="/bibliotecas/codemirror-5.7/mode/php/php.js"></script>
     <link rel="stylesheet" href="/src/css/stilo.css">
     <link rel="stylesheet" href="/src/css/coder.css">
     <title>Pro-Coder</title>
@@ -54,8 +44,8 @@ $user = mysqli_fetch_assoc($user);
     <div class="corpos">
       <div class="corpo3 crp"></div>
       <div id="corpo" class="crp">
-          <div id="pbl_abrir" onmouseover="personalizar('#pbl_abrir')" onclick="publicar('partilhar codigo')">
-              <button>carregar codigo</button>
+          <div id="pbl_abrir" onmouseover="personalizar('#pbl_abrir')" onclick="publicar('novo repositorio')">
+              <button>novo repositorio</button>
           </div>
           <div id="codigo_insert" class="conteiner_pbl remover">
               <form action="" method="post" enctype="multipart/form-data">
@@ -66,52 +56,10 @@ $user = mysqli_fetch_assoc($user);
                   <div id="pbl1" class="descricao">
                       <textarea placeholder="aqui vai a descricao do codigo" name="descricao" id=""></textarea>
                   </div>
-                  <div id="pbl1" class="lingua">
-                      <p>
-                          Linguagem
-                          <select name="linguagen" id="">
-                            <option value="php">PHP</option>
-                            <option value="python">PYTHON</option>
-                            <option value="java">JAVA</option>
-                            <option value="js">JAVA SCRIPT</option>
-                            <option value="c">C</option>
-                            <option value="c++">C++</option>
-                            <option value="c#">C#</option>
-                        </select>
-                      </p>
-                      <p class="">Selecionar tema: <select onchange="selectTheme()" id="select">
-                        <option>3024-day</option>
-                        <option selected>dracula</option>
-                        </select>
-                        </p>
-                  </div>
-                  <div id="" class="codigo">
-                      <textarea name="code" id="code">//digite aqui o seu codigo</textarea>
-                  </div>
                   <div id="pbl1">
-                      <div><input class="file" type="file" name="doc[]" accept="image/*" multiple></div>
                       <div><button name="btn_code">postar</button></div>
                   </div>
               </form>
-              <script>
-                var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                lineNumbers: true,
-                extraKeys: {"Ctrl-Space": "autocomplete"},
-                //keyMap: "sublime",
-                autoCloseBrackets: true,
-                matchBrackets: true,
-                showCursorWhenSelecting: true,
-                mode: {name: "javascript", globalVars: true}
-              });
-              var input = document.getElementById("select");
-
-              function selectTheme() {
-                var theme = input.options[input.selectedIndex].textContent;
-                editor.setOption("theme", theme);
-                //location.hash = "#" + theme;
-              }
-              selectTheme();
-              </script>
           </div>
           <div class="codigos">
               <?php
@@ -125,13 +73,6 @@ $user = mysqli_fetch_assoc($user);
       </div>
       <div class="corpo2 crp"></div>
     </div>
-        <?php
-        if (isset($_GET['pbl'])) {
-            ?>
-            <div class="info_corrente">codigo carregado com sucesso </div>
-            <?php
-        }
-        ?>      
     <?php include "../include/footer.php"; ?>
     <?php mysqli_close($link);?>
     <script src="/bibliotecas/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
