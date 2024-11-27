@@ -24,28 +24,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/glou_icon.png" type="image/x-icon">
-    <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/temas/<?=pegar_tema()?>.css">
-    <link rel="stylesheet" href="../css/stilo.css">
-    <link rel="stylesheet" href="../css/coder.css">
-    <link href="../bibliotecas/codemirror-5.7/lib/codemirror.css" rel="stylesheet">
+    <link rel="icon" href="/src/img/glou_icon.png" type="image/x-icon">
+    <link href="/bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/temas/<?=pegar_tema()?>.css">
+    <link rel="stylesheet" href="/src/css/stilo.css">
+    <link href="/bibliotecas/codemirror-5.7/lib/codemirror.css" rel="stylesheet">
     <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/base16-dark.css">
     <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/dracula.css">
     <link rel="stylesheet" href="../bibliotecas/codemirror-5.7/theme/eclipse.css">
-    <script src="../bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/addon/hint/javascript-hint.js"></script>
-    <script src="../bibliotecas/codemirror-5.7/mode/javascript/javascript.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/lib/codemirror.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/addon/hint/show-hint.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/addon/hint/javascript-hint.js"></script>
+    <script src="/bibliotecas/codemirror-5.7/mode/javascript/javascript.js"></script>
     <title>Document</title>
 </head>
 <body>
     <script>var indereco="../";</script>
-    <script src="../bibliotecas/jquery.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="/bibliotecas/jquery.js"></script>
+    <script src="/src/js/script.js"></script>
     <nav id="nav_simples">
-        <a href="../" class="link">pagina inicial</a>
+        <a href="/./" class="link">pagina inicial</a>
     </nav>
     <div class="corpos">
         <div class="corpo3 crp"></div>
@@ -78,16 +77,16 @@
             <footer class="footer_chat">
                 <div class="formulario_normal_de_envio">
                     <textarea name="texto_cmt" id="" placeholder="a tua opiniao e importante"></textarea>
-                    <div class="carregar"  style="background-image: url(../bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
-                    <button name="btn_cmt" style="background-image: url(../bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="comentar('<?=criptografar($id_pbl)?>','pbl',0)"></button>
+                    <div class="carregar"  style="background-image: url(/bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
+                    <button name="btn_cmt" style="background-image: url(/bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="comentar('<?=criptografar($id_pbl)?>','pbl',0)"></button>
                 </div>
             </footer>
         </div>
         <div class="corpo2 crp"></div>
     </div> 
-    <?php $abrir_nav= "segundo"; require "../include/footer.php"; ?>
-    <script src="../js/fim_script.js"></script>
-    <script src="../js/coder.js"></script>
+    <?php require "../include/footer.php"; ?>
+    <script src="/src/js/fim_script.js"></script>
+    <script src="/src/js/coder.js"></script>
     <?php
      if (isset($_GET['cmt'])) {
         if (!empty($_GET['cmt'])) {

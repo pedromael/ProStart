@@ -24,14 +24,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../img/glou_icon.png" type="image/x-icon">
-    <link href="../bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/temas/<?=pegar_tema()?>.css">
-    <link rel="stylesheet" href="../css/stilo.css">
+    <link rel="icon" href="/src/img/glou_icon.png" type="image/x-icon">
+    <link href="/bibliotecas/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/temas/<?=pegar_tema()?>.css">
+    <link rel="stylesheet" href="/src/css/stilo.css">
     <title>Responder</title>
 </head>
 <body>
-    <script src="../js/script.js"></script>
+    <script src="/src/js/script.js"></script>
     <script>var indereco = "../";</script>
     <nav id="nav_simples">
         <a href="../" class="link">pagina inicial</a>
@@ -60,13 +60,13 @@
             <footer class="footer_chat">
                 <div class="formulario_normal_de_envio">
                     <textarea name="texto_cmt" id="" placeholder="a tua opiniao e importante"></textarea>
-                    <div class="carregar"  style="background-image: url(../bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
-                    <button name="btn_cmt" style="background-image: url(../bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="comentar('<?=criptografar($sql['id'])?>','pbl','<?=criptografar($sql['id_cmt'])?>')"></button>
+                    <div class="carregar"  style="background-image: url(/bibliotecas/bootstrap/icones/file-earmark-image.svg);"></div>
+                    <button name="btn_cmt" style="background-image: url(/bibliotecas/bootstrap/icones/send.svg);" class="form-control" onclick="comentar('<?=criptografar($sql['id'])?>','pbl','<?=criptografar($sql['id_cmt'])?>')"></button>
                 </div>
             </footer>
         </div>
         <div class="corpo2 crp"></div>
     </div> 
-    <?php $abrir_nav= "segundo"; require "../include/footer.php"; ?>
-    <script src="../js/fim_script.js"></script>
+    <?php require "../include/footer.php"; ?>
+    <script src="/src/js/fim_script.js"></script>
 </html>
