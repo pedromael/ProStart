@@ -57,7 +57,7 @@ $user = mysqli_fetch_assoc($user);
                       <textarea placeholder="aqui vai a descricao do codigo" name="descricao" id=""></textarea>
                   </div>
                   <div id="pbl1">
-                      <div><button name="btn_code">postar</button></div>
+                      <div><button name="btn_repositorio">Criar</button></div>
                   </div>
               </form>
           </div>

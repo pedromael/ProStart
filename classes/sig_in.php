@@ -30,6 +30,17 @@ class sig_in extends conexao{
         if ($sql->rowCount() > 0) {
             $dados = $sql->fetch();
 
+            if (!is_dir("../src/userFile/".$dados['code_nome']."/img/")) {
+                if (!mkdir("../src/userFile/".$dados['code_nome']."/img/", 0755, true)) {
+                    return false;
+                }
+            }
+            if (!is_dir("../src/userFile/".$dados['code_nome']."/repositorio/")) {
+                if (!mkdir("../src/userFile/".$dados['code_nome']."/repositorio/", 0755, true)) {
+                    return false;
+                }
+            }
+
             $_SESSION['id_user'] = $dados['id_user'];
             if ($this->registrar_login()) {
                 return true;
@@ -42,7 +53,9 @@ class sig_in extends conexao{
     }
     public function cadastrar($nome,$email,$pais,$senha)
     {
-        $code_nome = gerar_code_nome($nome);
+        if (!$code_nome = gerar_code_nome($nome)) {
+            return false;
+        }
 
         $sqll = $this->pdo->prepare("SELECT * FROM usuarios WHERE email =:e");
         $sqll->bindValue(":e", $email);
@@ -60,6 +73,11 @@ class sig_in extends conexao{
                 $sql->bindValue(":s", md5($senha));
                 $sql->bindValue(":e", $email);
                 if ($sql->execute()) {
+
+                    if (!mkdir("../src/userFile/".$code_nome."/img/", 0755, true) || !mkdir("../src/userFile/".$code_nome."/repositorio/", 0755, true)) {
+                        return false;
+                    }
+
                     $dados = $sql->fetch();
 
                     $_SESSION['id_user'] = $dados['id_user'];

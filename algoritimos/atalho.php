@@ -235,7 +235,7 @@ function pegar_foto_perfil($tipo,$id)
         $img = mysqli_query(conn(), "SELECT * FROM doc WHERE id_user=$id AND tipo='$tipo' ORDER BY id_doc DESC");
         $img = mysqli_fetch_assoc($img);
         if (isset($img['indereco'])) {
-            return "/src/userFile/".(new informacoes_usuario())->user['code_nome']."/img/".$img['indereco'];
+            return "/src/userFile/".(new informacoes_usuario())->usuario($id)['code_nome']."/img/".$img['indereco'];
         }else if (empty($imagen)) {   
             return "/src/img/sem_img_no_perfil.jpeg";
         }
