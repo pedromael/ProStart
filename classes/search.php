@@ -124,7 +124,6 @@ class search extends informacoes_usuario
                     <?php
                 } elseif($row["tipo"] == "pbl"){
                     $m = new postes();
-                    $m->destino = "./";
                     $m->mostrar($m->poste($row['id']));
                 }
             }

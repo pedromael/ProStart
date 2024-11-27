@@ -36,7 +36,7 @@ class lista_mensagens extends conexao
             $texto = $texto." ".$tres_pontos;
         }
         ?>
-        <a href="/mensagens/?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
+        <a href="/mensagens/?user=<?=criptografar($id_dest)?>" class="text-decoration-none text-dark">
             <div class="d-flex align-items-center p-2 border-bottom">
                 <!-- Imagem do usuário -->
                 <div class="flex-shrink-0">

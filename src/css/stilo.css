@@ -292,11 +292,11 @@ nav .pesquisar{
     right: 50px;
     bottom: 0;
     height: 43px;
-    margin-bottom: 3px;
-    border-width: 2px;
+    margin-bottom: 2px;
+    border-width: 5px;
     border-style: solid;
     border-radius: 20px;
-    border-color: var(--cor_sec);
+    border-color: var(--cor_terc);
 }
 .pesquisar input{
     width: calc(100% - 50px);

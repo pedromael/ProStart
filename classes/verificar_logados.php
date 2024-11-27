@@ -1,18 +1,16 @@
 <?php
 class verificar_logados extends conexao
 {
-    public $indereco;
     private $id_user;
     public function __construct($indereco){
         parent::__construct();
-        $this->indereco = $indereco;
         $this->id_user = $_SESSION['id_user'];
     }
     function mostrar($id_dest,$ativo = false) {
         $imagen = pegar_foto_perfil("perfil",$id_dest);
         ?>
-        <a href="<?=$this->indereco?>mensagens/chat.php?user=<?=criptografar($id_dest)?>">
-            <div class="user" style="background-image: url(<?=$this->indereco?>media/img/<?=$imagen?>);">
+        <a href="/mensagens/?user=<?=criptografar($id_dest)?>">
+            <div class="user" style="background-image: url(<?=$imagen?>);">
                 <?php if ($ativo) {?><div class="logado"></div><?php
                 }else {?><div class="nao_logado"></div><?php
                 }?>

@@ -119,7 +119,6 @@ $user = mysqli_fetch_assoc($user);
               $_SESSION['visualizado'] = array();
               $_SESSION['code_visualizado'] = array();
               $s = new selecionar_feed();
-              $s->codigos->indereco = "../";
               $s->selecionar_poste("codigos");
               ?>
           </div>
