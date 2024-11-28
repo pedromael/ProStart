@@ -38,7 +38,7 @@ SyliaGO/
    ```bash
    mysql -u seu-usuario -p seu-banco-de-dados < src/bd.sql
    ```
-3. Configure o servidor web para apontar para o diretório `src/frontend`.  
+3. Configure o servidor web para apontar para o diretório `./`.  
 4. Inicie o servidor local:  
    ```bash
    php -S localhost:8000 -t src/frontend
